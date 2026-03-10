@@ -1,0 +1,50 @@
+{
+  "id": "grammar-17",
+  "title": "Модальные глаголы (bisa, harus, mau)",
+  "title_id": "Verba modal (bisa, harus, mau)",
+  "order": 17,
+  "difficulty": 2,
+  "estimated_time": 8,
+  "prerequisites": ["grammar-06"],
+  "theory": {
+    "text": "Bisa, harus и mau — частые модальные слова: bisa = мочь/уметь, harus = должен/нужно, mau = хотеть.",
+    "key_points": [
+      "Saya bisa bicara bahasa Indonesia. — Я могу говорить по‑индонезийски.",
+      "Kamu harus belajar. — Ты должен учиться.",
+      "Dia mau pergi ke pantai. — Он/она хочет пойти на пляж.",
+      "Порядок: субъект + modal + глагол."
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Saya tidak bisa berenang.",
+      "russian": "Я не умею плавать."
+    },
+    {
+      "indonesian": "Anda harus memakai masker di sini.",
+      "russian": "Вы должны носить маску здесь."
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "Как сказать «я хочу есть»?",
+      "options": [
+        "Saya bisa makan.",
+        "Saya harus makan.",
+        "Saya mau makan.",
+        "Saya makan mau."
+      ],
+      "correct": 2,
+      "explanation": "mau makan = хочу есть."
+    },
+    {
+      "type": "fill",
+      "question": "Kamu ___ belajar bahasa Indonesia setiap hari. (ты должен учить...)",
+      "answer": "harus",
+      "hint": "harus = должен/нужно."
+    }
+  ],
+  "xp_reward": 22
+}
+

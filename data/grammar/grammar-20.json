@@ -1,0 +1,49 @@
+{
+  "id": "grammar-20",
+  "title": "Сложные предложения (yang, karena, tetapi)",
+  "title_id": "Kalimat majemuk (yang, karena, tetapi)",
+  "order": 20,
+  "difficulty": 3,
+  "estimated_time": 10,
+  "prerequisites": ["grammar-16", "grammar-18"],
+  "theory": {
+    "text": "Связки yang, karena, tetapi помогают строить сложные предложения: yang — относительное «который», karena — «потому что», tetapi — «но/однако».",
+    "key_points": [
+      "orang yang tinggal di sini — человек, который живёт здесь",
+      "Saya tidak pergi karena saya sakit. — Я не пошёл, потому что болен.",
+      "Saya mau pergi, tetapi hujan. — Я хочу пойти, но идёт дождь."
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Hotel yang dekat pantai itu mahal.",
+      "russian": "Отель, который рядом с пляжем, дорогой."
+    },
+    {
+      "indonesian": "Saya belajar bahasa Indonesia karena saya suka Bali.",
+      "russian": "Я учу индонезийский, потому что мне нравится Бали."
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "Как сказать «я не поехал, потому что был занят»?",
+      "options": [
+        "Saya tidak pergi tetapi saya sibuk.",
+        "Saya tidak pergi karena saya sibuk.",
+        "Saya pergi karena saya sibuk.",
+        "Saya pergi tetapi saya sibuk."
+      ],
+      "correct": 1,
+      "explanation": "karena = потому что."
+    },
+    {
+      "type": "fill",
+      "question": "Ini restoran ___ kami makan kemarin. (это ресторан, в котором мы ели вчера)",
+      "answer": "yang",
+      "hint": "yang вводит придаточное «который»."
+    }
+  ],
+  "xp_reward": 30
+}
+

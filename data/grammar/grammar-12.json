@@ -1,0 +1,52 @@
+{
+  "id": "grammar-12",
+  "title": "Указательные местоимения (ini, itu)",
+  "title_id": "Kata tunjuk (ini, itu)",
+  "order": 12,
+  "difficulty": 1,
+  "estimated_time": 6,
+  "prerequisites": ["grammar-04"],
+  "theory": {
+    "text": "Ini и itu — базовые указательные: ini = «этот/это (рядом)», itu = «тот/то (подальше)». Часто используются с существительными или сами по себе.",
+    "key_points": [
+      "ini — ближе к говорящему",
+      "itu — дальше или уже упомянуто",
+      "apa ini? — что это?",
+      "siapa itu? — кто это (там)?"
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Ini buku saya.",
+      "russian": "Это моя книга.",
+      "notes": "ini перед существительным."
+    },
+    {
+      "indonesian": "Itu restoran enak.",
+      "russian": "Тот ресторан вкусный.",
+      "notes": "itu + существительное."
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "Ты показываешь на близкую чашку: «это кофе». Что выбрать?",
+      "options": [
+        "itu kopi",
+        "kopi itu",
+        "ini kopi",
+        "kopi ini"
+      ],
+      "correct": 3,
+      "explanation": "Чаще: kopi ini = этот кофе."
+    },
+    {
+      "type": "fill",
+      "question": "___ rumah besar. (тот дом большой)",
+      "answer": "rumah itu",
+      "hint": "Можно и itu rumah, но здесь лучше rumah itu."
+    }
+  ],
+  "xp_reward": 16
+}
+

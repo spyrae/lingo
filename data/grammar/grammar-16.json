@@ -1,0 +1,50 @@
+{
+  "id": "grammar-16",
+  "title": "Временные маркеры (sudah, sedang, akan)",
+  "title_id": "Penanda waktu (sudah, sedang, akan)",
+  "order": 16,
+  "difficulty": 2,
+  "estimated_time": 8,
+  "prerequisites": ["grammar-03"],
+  "theory": {
+    "text": "В индонезийском нет грамматических времён как в русском. Время часто выражается отдельными словами: sudah (уже/прошедшее), sedang (прямо сейчас/в процессе), akan (будущее).",
+    "key_points": [
+      "Saya sudah makan. — Я уже поел.",
+      "Saya sedang makan. — Я сейчас ем.",
+      "Saya akan makan. — Я буду есть.",
+      "Контекст (вчера, завтра, сейчас) тоже важен."
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Dia sedang belajar bahasa Indonesia.",
+      "russian": "Он/она сейчас учит индонезийский."
+    },
+    {
+      "indonesian": "Kami akan pergi ke Bali besok.",
+      "russian": "Мы поедем на Бали завтра."
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "Как сказать «я уже приехал»?",
+      "options": [
+        "Saya sedang datang.",
+        "Saya akan datang.",
+        "Saya sudah datang.",
+        "Saya datang besok."
+      ],
+      "correct": 2,
+      "explanation": "sudah datang = уже приехал."
+    },
+    {
+      "type": "fill",
+      "question": "Dia ___ tidur sekarang. (он сейчас спит)",
+      "answer": "sedang",
+      "hint": "sedang = действие в процессе."
+    }
+  ],
+  "xp_reward": 22
+}
+

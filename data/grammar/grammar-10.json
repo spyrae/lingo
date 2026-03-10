@@ -1,0 +1,53 @@
+{
+  "id": "grammar-10",
+  "title": "Суффикс -i",
+  "title_id": "Sufiks -i",
+  "order": 10,
+  "difficulty": 2,
+  "estimated_time": 8,
+  "prerequisites": ["grammar-07"],
+  "theory": {
+    "text": "Суффикс -i подчёркивает место или объект, на который направлено действие. Часто используется вместе с префиксом me-: memberikan → memberi, memberi tahu и т.п.",
+    "key_points": [
+      "mengisi — заполнять (форму, бутылку)",
+      "mengunjungi — навещать, посещать",
+      "menulisi — исписать (поверхность)",
+      "memberi tahu — сообщать/давать знать",
+      "meletakkan — класть (хотя формально -kan, по функции похоже)"
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Silakan mengisi formulir ini.",
+      "russian": "Пожалуйста, заполните эту форму.",
+      "notes": "mengisi formulir = заполнять форму."
+    },
+    {
+      "indonesian": "Kami mengunjungi teman di Jakarta.",
+      "russian": "Мы навещаем друга в Джакарте.",
+      "notes": "mengunjungi teman = навещать друга."
+    }
+  ],
+  "exercises": [
+    {
+      "type": "fill",
+      "question": "Dia ___ botol dengan air. (он наполняет бутылку водой)",
+      "answer": "mengisi",
+      "hint": "me- + isi."
+    },
+    {
+      "type": "choice",
+      "question": "Как лучше перевести «посетить музей»?",
+      "options": [
+        "pergi museum",
+        "datang museum",
+        "mengunjungi museum",
+        "bermain di museum"
+      ],
+      "correct": 2,
+      "explanation": "mengunjungi museum = посетить музей."
+    }
+  ],
+  "xp_reward": 24
+}
+

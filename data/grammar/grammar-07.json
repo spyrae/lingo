@@ -1,0 +1,53 @@
+{
+  "id": "grammar-07",
+  "title": "Префикс me-",
+  "title_id": "Prefiks me-",
+  "order": 7,
+  "difficulty": 2,
+  "estimated_time": 8,
+  "prerequisites": ["grammar-06"],
+  "theory": {
+    "text": "Префикс me- образует переходные глаголы. Его форма меняется в зависимости от начальной согласной корня: men-, mem-, meny-, meng-, me-.",
+    "key_points": [
+      "me- + baca → membaca (читать)",
+      "me- + tulis → menulis (писать)",
+      "me- + panggil → memanggil (звать)",
+      "me- + cari → mencari (искать)",
+      "me- + kerja → mengerja/ mengerjakan (делать работу)"
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Saya membaca buku setiap malam.",
+      "russian": "Я читаю книгу каждый вечер.",
+      "notes": "membaca = читать"
+    },
+    {
+      "indonesian": "Dia mencari hotel murah.",
+      "russian": "Он/она ищет недорогой отель.",
+      "notes": "mencari = искать"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "fill",
+      "question": "Dia ___ surat. (писать письмо)",
+      "answer": "menulis",
+      "hint": "me- + tulis"
+    },
+    {
+      "type": "choice",
+      "question": "Какой вариант с префиксом me- верный?",
+      "options": [
+        "mepanggil",
+        "memanggil",
+        "menpanggil",
+        "mengpanggil"
+      ],
+      "correct": 1,
+      "explanation": "Корень panggil → memanggil."
+    }
+  ],
+  "xp_reward": 22
+}
+

@@ -1,0 +1,53 @@
+{
+  "id": "grammar-09",
+  "title": "Суффикс -kan",
+  "title_id": "Sufiks -kan",
+  "order": 9,
+  "difficulty": 2,
+  "estimated_time": 8,
+  "prerequisites": ["grammar-07"],
+  "theory": {
+    "text": "Суффикс -kan часто добавляет значение «делать что‑то кому‑то/для кого‑то» или «сделать полностью». Часто используется вместе с префиксом me-.",
+    "key_points": [
+      "membuka — открывать, membuka-kan → membukakan (открыть кому‑то)",
+      "menuliskan — написать (для кого‑то)",
+      "menjawabkan — отвечать за кого‑то",
+      "memasakkan — приготовить (для кого‑то)",
+      "menghidupkan — включить (свет, устройство)"
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Saya membukakan pintu untuk kamu.",
+      "russian": "Я открою дверь для тебя.",
+      "notes": "membukakan = открыть кому‑то."
+    },
+    {
+      "indonesian": "Dia memasakkan makan malam untuk keluarga.",
+      "russian": "Он/она готовит ужин для семьи.",
+      "notes": "memasakkan = готовить для кого‑то."
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "Как сказать «включить свет»?",
+      "options": [
+        "menghidupkan lampu",
+        "memasak lampu",
+        "membuka lampu",
+        "berlampu"
+      ],
+      "correct": 0,
+      "explanation": "menghidupkan lampu = включить свет."
+    },
+    {
+      "type": "fill",
+      "question": "Tolong ___ pintu untuk saya. (открой дверь для меня)",
+      "answer": "bukakan",
+      "hint": "me- + buka + -kan → membukakan."
+    }
+  ],
+  "xp_reward": 24
+}
+

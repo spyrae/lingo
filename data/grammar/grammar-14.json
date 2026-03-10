@@ -1,0 +1,53 @@
+{
+  "id": "grammar-14",
+  "title": "Числительные и счётные слова",
+  "title_id": "Bilangan dan kata penggolong",
+  "order": 14,
+  "difficulty": 2,
+  "estimated_time": 9,
+  "prerequisites": ["grammar-11"],
+  "theory": {
+    "text": "Числительные: satu, dua, tiga... Для существительных часто используют счётные слова (penggolong): satu orang, dua buah, tiga ekor.",
+    "key_points": [
+      "satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh",
+      "belas (11–19): sebelas, dua belas...",
+      "puluh (десятки): dua puluh, tiga puluh...",
+      "orang — счётное слово для людей",
+      "buah — универсальное счётное слово для предметов"
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Saya punya dua orang anak.",
+      "russian": "У меня двое детей.",
+      "notes": "dua orang anak = два человека‑ребёнка."
+    },
+    {
+      "indonesian": "Dia membeli tiga buah buku.",
+      "russian": "Он/она купил(а) три книги.",
+      "notes": "tiga buah buku."
+    }
+  ],
+  "exercises": [
+    {
+      "type": "fill",
+      "question": "Kami pesan ___ gelas teh. (мы закажем три стакана чая)",
+      "answer": "tiga",
+      "hint": "gelas — уже счётное слово."
+    },
+    {
+      "type": "choice",
+      "question": "Как корректно сказать «пять человек»?",
+      "options": [
+        "lima orang",
+        "orang lima",
+        "lima buah orang",
+        "buah lima orang"
+      ],
+      "correct": 0,
+      "explanation": "lima orang = пять человек."
+    }
+  ],
+  "xp_reward": 24
+}
+

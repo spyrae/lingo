@@ -1,0 +1,53 @@
+{
+  "id": "grammar-13",
+  "title": "Притяжательные конструкции",
+  "title_id": "Kepunyaan (milik)",
+  "order": 13,
+  "difficulty": 2,
+  "estimated_time": 7,
+  "prerequisites": ["grammar-02", "grammar-12"],
+  "theory": {
+    "text": "Притяжательность часто выражается с помощью местоимения после существительного: buku saya (моя книга), rumah mereka (их дом). Возможны формы с punya/milik.",
+    "key_points": [
+      "buku saya — моя книга",
+      "rumah kamu — твой дом",
+      "orang tua kami — наши родители (без собеседника)",
+      "ini mobil siapa? — чья это машина?",
+      "Ini buku saya. / Buku ini milik saya."
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Ini tas kamu atau tas dia?",
+      "russian": "Это твоя сумка или его/её?",
+      "notes": "tas = сумка."
+    },
+    {
+      "indonesian": "Rumah mereka di Jakarta.",
+      "russian": "Их дом в Джакарте.",
+      "notes": "rumah mereka = их дом."
+    }
+  ],
+  "exercises": [
+    {
+      "type": "fill",
+      "question": "Ini ___ rumah. (это наш дом, включая собеседника)",
+      "answer": "rumah kita",
+      "hint": "kita включает собеседника."
+    },
+    {
+      "type": "choice",
+      "question": "Как спросить «чья это книга?»",
+      "options": [
+        "Ini buku siapa?",
+        "Siapa ini buku?",
+        "Buku siapa ini?",
+        "Siapa buku ini?"
+      ],
+      "correct": 0,
+      "explanation": "Ini buku siapa? — корректный и частый вариант."
+    }
+  ],
+  "xp_reward": 20
+}
+

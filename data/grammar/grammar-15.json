@@ -1,0 +1,51 @@
+{
+  "id": "grammar-15",
+  "title": "Предлоги места (di, ke, dari)",
+  "title_id": "Preposisi tempat (di, ke, dari)",
+  "order": 15,
+  "difficulty": 1,
+  "estimated_time": 7,
+  "prerequisites": ["grammar-03"],
+  "theory": {
+    "text": "di, ke и dari — базовые предлоги места/направления: di = в/на (место), ke = в/к (направление), dari = из/от.",
+    "key_points": [
+      "di rumah — дома/в доме",
+      "ke sekolah — в школу",
+      "dari bandara — из аэропорта",
+      "di Bali, ke Bali, dari Bali",
+      "di depan, di belakang, di atas, di bawah"
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Saya tinggal di Rusia.",
+      "russian": "Я живу в России."
+    },
+    {
+      "indonesian": "Kami pergi ke pantai.",
+      "russian": "Мы идём на пляж."
+    }
+  ],
+  "exercises": [
+    {
+      "type": "fill",
+      "question": "Dia datang ___ Jakarta. (он приехал из Джакарты)",
+      "answer": "dari",
+      "hint": "из города — dari."
+    },
+    {
+      "type": "choice",
+      "question": "Как сказать «я в отеле»?",
+      "options": [
+        "Saya ke hotel.",
+        "Saya dari hotel.",
+        "Saya di hotel.",
+        "Saya hotel di."
+      ],
+      "correct": 2,
+      "explanation": "di hotel = нахожусь в отеле."
+    }
+  ],
+  "xp_reward": 18
+}
+

@@ -1,0 +1,53 @@
+{
+  "id": "grammar-08",
+  "title": "Префикс ber-",
+  "title_id": "Prefiks ber-",
+  "order": 8,
+  "difficulty": 2,
+  "estimated_time": 8,
+  "prerequisites": ["grammar-06"],
+  "theory": {
+    "text": "Префикс ber- часто образует непереходные глаголы: «иметь/находиться в состоянии». Часто используется с существительными и корнями действия.",
+    "key_points": [
+      "berjalan — идти пешком",
+      "berbicara — разговаривать",
+      "bermain — играть",
+      "berkacamata — носить очки",
+      "berkeluarga — иметь семью"
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Anak-anak bermain di pantai.",
+      "russian": "Дети играют на пляже.",
+      "notes": "bermain = играть"
+    },
+    {
+      "indonesian": "Dia berkacamata.",
+      "russian": "Он/она носит очки.",
+      "notes": "berkacamata = в очках"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "fill",
+      "question": "Kami ___ di taman. (гулять/идти пешком)",
+      "answer": "berjalan",
+      "hint": "ber- + jalan"
+    },
+    {
+      "type": "choice",
+      "question": "Как сказать «играть в футбол»?",
+      "options": [
+        "bersepak bola",
+        "mesepek bola",
+        "disepak bola",
+        "tersepak bola"
+      ],
+      "correct": 0,
+      "explanation": "ber- + sepak bola → bersepak bola."
+    }
+  ],
+  "xp_reward": 22
+}
+

@@ -1,0 +1,50 @@
+{
+  "id": "grammar-18",
+  "title": "Сравнения (lebih, paling, sama)",
+  "title_id": "Perbandingan (lebih, paling, sama)",
+  "order": 18,
+  "difficulty": 3,
+  "estimated_time": 9,
+  "prerequisites": ["grammar-08", "grammar-14"],
+  "theory": {
+    "text": "Для сравнений используют lebih (более), paling (самый) и sama ... dengan (такой же, как).",
+    "key_points": [
+      "lebih + прилагательное: lebih besar (больше), lebih murah (дешевле)",
+      "paling + прилагательное: paling bagus (самый лучший)",
+      "sama tinggi dengan — такого же роста, как",
+      "daripada — чем (в сравнении): lebih murah daripada..."
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Hotel ini lebih murah daripada hotel itu.",
+      "russian": "Этот отель дешевле, чем тот."
+    },
+    {
+      "indonesian": "Bali paling populer untuk turis.",
+      "russian": "Бали — самый популярный для туристов."
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "Как сказать «эта еда вкуснее, чем та»?",
+      "options": [
+        "Makanan ini paling enak daripada itu.",
+        "Makanan ini lebih enak daripada itu.",
+        "Makanan ini sama enak dengan itu.",
+        "Makanan ini enak dari itu."
+      ],
+      "correct": 1,
+      "explanation": "lebih enak daripada = вкуснее, чем."
+    },
+    {
+      "type": "fill",
+      "question": "Dia ___ tinggi ___ saya. (он такого же роста, как я)",
+      "answer": "sama; dengan",
+      "hint": "sama ... dengan."
+    }
+  ],
+  "xp_reward": 26
+}
+

@@ -1,0 +1,53 @@
+{
+  "id": "grammar-11",
+  "title": "Редупликация (множественное число)",
+  "title_id": "Reduplikasi (jamak)",
+  "order": 11,
+  "difficulty": 2,
+  "estimated_time": 7,
+  "prerequisites": ["grammar-02"],
+  "theory": {
+    "text": "Редупликация — повторение слова: rumah-rumah, anak-anak. Часто используется для выражения множественного числа или идеи «разные/многие».",
+    "key_points": [
+      "anak → anak-anak (дети)",
+      "orang → orang-orang (люди)",
+      "buku → buku-buku (книги)",
+      "tidak всегда обязательна: konteks тоже может показывать множественное число",
+      "иногда меняется значение: laki-laki (мужчина), tetangga-tetangga (соседи)"
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Anak-anak bermain di taman.",
+      "russian": "Дети играют в парке.",
+      "notes": "anak-anak = дети."
+    },
+    {
+      "indonesian": "Di pantai ada banyak orang-orang.",
+      "russian": "На пляже много людей.",
+      "notes": "orang-orang = люди."
+    }
+  ],
+  "exercises": [
+    {
+      "type": "fill",
+      "question": "Saya suka membaca ___ menarik. (интересные книги)",
+      "answer": "buku-buku",
+      "hint": "buku → buku-buku."
+    },
+    {
+      "type": "choice",
+      "question": "Как перевести «дети»?",
+      "options": [
+        "anak",
+        "anak-anak",
+        "orang",
+        "orang-anak"
+      ],
+      "correct": 1,
+      "explanation": "anak-anak = дети."
+    }
+  ],
+  "xp_reward": 20
+}
+

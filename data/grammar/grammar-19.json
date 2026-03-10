@@ -1,0 +1,50 @@
+{
+  "id": "grammar-19",
+  "title": "Пассивный залог (di-)",
+  "title_id": "Bentuk pasif (di-)",
+  "order": 19,
+  "difficulty": 3,
+  "estimated_time": 10,
+  "prerequisites": ["grammar-07", "grammar-15"],
+  "theory": {
+    "text": "Пассив с префиксом di- подчёркивает объект действия: buku itu dibaca saya. Агент может отмечаться словом oleh.",
+    "key_points": [
+      "Pintu itu dibuka. — Эта дверь открыта.",
+      "Makanan sudah dimakan. — Еда уже съедена.",
+      "Buku itu dibaca oleh dia. — Та книга читается им/ею.",
+      "Часто субъект (агент) опускается, если он не важен."
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Kamar sudah dibersihkan.",
+      "russian": "Комната уже убрана."
+    },
+    {
+      "indonesian": "Makanan ini dimasak oleh ibu.",
+      "russian": "Эта еда приготовлена мамой."
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "Как сказать «эта комната забронирована»?",
+      "options": [
+        "Kamar ini memesankan.",
+        "Kamar ini dipesan.",
+        "Kamar ini memesan.",
+        "Kamar ini pesan."
+      ],
+      "correct": 1,
+      "explanation": "dipesan = забронирована."
+    },
+    {
+      "type": "fill",
+      "question": "Taksi sudah ___ oleh tamu. (такси уже вызвано гостем)",
+      "answer": "dipesan",
+      "hint": "di- + pesan."
+    }
+  ],
+  "xp_reward": 28
+}
+

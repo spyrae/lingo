@@ -1,0 +1,56 @@
+{
+  "id": "grammar-06",
+  "title": "Базовые глаголы",
+  "title_id": "Kata Kerja Dasar",
+  "order": 6,
+  "difficulty": 1,
+  "estimated_time": 7,
+  "prerequisites": ["grammar-05"],
+  "theory": {
+    "text": "Многие базовые глаголы в индонезийском используются без аффиксов в разговорной речи. Они не меняются по лицам и числам.",
+    "key_points": [
+      "makan — есть",
+      "minum — пить",
+      "pergi — идти/уходить",
+      "datang — приходить",
+      "tinggal — жить/останавливаться"
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Saya makan nasi setiap pagi.",
+      "russian": "Я ем рис каждое утро.",
+      "notes": "makan = есть"
+    },
+    {
+      "indonesian": "Dia tinggal di Bali.",
+      "russian": "Он/она живёт на Бали.",
+      "notes": "tinggal = жить/проживать"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "Как сказать «пить кофе»?",
+      "options": [
+        "makan kopi",
+        "minum kopi",
+        "pergi kopi",
+        "datang kopi"
+      ],
+      "correct": 1,
+      "explanation": "minum = пить."
+    },
+    {
+      "type": "translate",
+      "question": "Переведи: «Мы живём в Джакарте.»",
+      "indonesian": "Kami tinggal di Jakarta.",
+      "accept": [
+        "kami tinggal di jakarta"
+      ],
+      "explanation": "kami — мы (без собеседника), tinggal — жить."
+    }
+  ],
+  "xp_reward": 18
+}
+
