@@ -70,6 +70,20 @@ class UserRepository:
         )
         await self._db.commit()
 
+    async def set_reminder_enabled(self, telegram_id: int, enabled: bool) -> None:
+        await self._db.execute(
+            "UPDATE users SET reminder_enabled = ?, updated_at = CURRENT_TIMESTAMP WHERE telegram_id = ?",
+            (1 if enabled else 0, telegram_id),
+        )
+        await self._db.commit()
+
+    async def set_reminder_time(self, telegram_id: int, reminder_time: str) -> None:
+        await self._db.execute(
+            "UPDATE users SET reminder_time = ?, updated_at = CURRENT_TIMESTAMP WHERE telegram_id = ?",
+            (reminder_time, telegram_id),
+        )
+        await self._db.commit()
+
     async def add_xp(self, telegram_id: int, xp: int) -> None:
         if xp <= 0:
             return

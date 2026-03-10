@@ -20,6 +20,9 @@ async def cmd_help(message: Message) -> None:
         "/lesson — уроки\n"
         "/practice — практика диалога\n"
         "/stop — остановить практику\n"
+        "/remind_on — включить напоминания\n"
+        "/remind_off — выключить напоминания\n"
+        "/remind_time HH:MM — время напоминания\n"
         "/ping — проверка, что бот жив",
     )
 

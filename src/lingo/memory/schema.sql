@@ -125,3 +125,14 @@ CREATE TABLE IF NOT EXISTS daily_stats (
   UNIQUE(user_id, date)
 );
 
+-- Reminders log: prevents spamming the same user multiple times per day.
+CREATE TABLE IF NOT EXISTS reminders_sent (
+  id INTEGER PRIMARY KEY,
+  user_id INTEGER NOT NULL,
+  date DATE NOT NULL,
+  reminder_time TEXT NOT NULL,
+  sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  UNIQUE(user_id, date)
+);
+
