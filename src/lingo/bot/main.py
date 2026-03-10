@@ -9,6 +9,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.types import Update
 
 from lingo.config import Settings
+from lingo.bot.middlewares.db import DbMiddleware
 from lingo.memory.database import Database
 
 logger = logging.getLogger(__name__)
@@ -22,10 +23,12 @@ def create_bot(settings: Settings) -> Bot:
 
 
 def create_dispatcher() -> Dispatcher:
-    from lingo.bot.handlers import commands
+    from lingo.bot.handlers import commands, menu, onboarding
 
     dp = Dispatcher(storage=MemoryStorage())
+    dp.include_router(onboarding.router)
     dp.include_router(commands.router)
+    dp.include_router(menu.router)
     return dp
 
 
@@ -69,14 +72,12 @@ async def run_bot(settings: Settings) -> None:
     dp.update.middleware(create_auth_middleware(settings))
 
     logger.info("Starting bot polling...")
+    db = Database(settings.db_path)
     try:
-        db = Database(settings.db_path)
         await db.connect()
-        dp["db"] = db
+        dp.update.middleware(DbMiddleware(db))
         await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
     finally:
-        db_obj = dp.get("db")
-        if isinstance(db_obj, Database):
-            await db_obj.disconnect()
+        await db.disconnect()
         await bot.session.close()
 

@@ -2,17 +2,9 @@ from aiogram import Router
 from aiogram.filters import Command
 from aiogram.types import Message
 
+from lingo.bot.keyboards.reply import get_main_menu_keyboard
+
 router = Router(name="commands")
-
-
-@router.message(Command("start"))
-async def cmd_start(message: Message) -> None:
-    await message.answer(
-        "<b>Lingo</b> — Indonesian language tutor\n\n"
-        "Команды:\n"
-        "/help — справка\n"
-        "/ping — проверка, что бот жив",
-    )
 
 
 @router.message(Command("help"))
@@ -22,8 +14,15 @@ async def cmd_help(message: Message) -> None:
         "1) Карточки (SRS) — учим слова по интервальному повторению\n"
         "2) Уроки — грамматика + упражнения\n"
         "3) Практика — диалоги с AI\n\n"
-        "Пока это базовый каркас. Дальше начнём с базы проекта и схемы данных.",
+        "Команды:\n"
+        "/menu — главное меню\n"
+        "/ping — проверка, что бот жив",
     )
+
+
+@router.message(Command("menu"))
+async def cmd_menu(message: Message) -> None:
+    await message.answer("Главное меню:", reply_markup=get_main_menu_keyboard())
 
 
 @router.message(Command("ping"))

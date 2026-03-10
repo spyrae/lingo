@@ -41,3 +41,4 @@ async def test_can_insert_user(tmp_path: Path) -> None:
     finally:
         await db.disconnect()
 
+
