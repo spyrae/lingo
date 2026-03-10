@@ -1,0 +1,36 @@
+{
+  "id": "scenario-01",
+  "title": "Кафе: заказ еды и напитков",
+  "title_id": "Cafe order",
+  "order": 1,
+  "difficulty": 1,
+  "estimated_time": 8,
+  "tags": ["food", "polite", "numbers"],
+  "setting": "Ты в небольшом кафе на Бали. Нужно вежливо заказать еду и напиток, уточнить цену и попросить счёт.",
+  "roles": {
+    "student": "турист из России",
+    "tutor": "официант (дружелюбный)"
+  },
+  "goals": [
+    "поздороваться и попросить меню",
+    "заказать одно блюдо и один напиток",
+    "спросить цену",
+    "попросить счёт"
+  ],
+  "must_use": [
+    "selamat siang",
+    "tolong",
+    "saya mau",
+    "berapa harganya",
+    "tagihan"
+  ],
+  "sample_dialog": [
+    { "role": "student", "text": "Selamat siang! Tolong, menu ya." },
+    { "role": "tutor", "text": "Selamat siang! Ini menunya. Mau pesan apa?" },
+    { "role": "student", "text": "Saya mau nasi goreng dan es teh. Berapa harganya?" },
+    { "role": "tutor", "text": "Nasi goreng 35 ribu, es teh 10 ribu. Mau yang pedas?" },
+    { "role": "student", "text": "Tidak pedas, terima kasih. Nanti minta tagihan ya." },
+    { "role": "tutor", "text": "Baik. Saya antar pesanannya sebentar lagi." }
+  ]
+}
+

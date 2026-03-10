@@ -1,0 +1,36 @@
+{
+  "id": "scenario-07",
+  "title": "Храм: правила, одежда и уважение",
+  "title_id": "Temple etiquette",
+  "order": 7,
+  "difficulty": 2,
+  "estimated_time": 9,
+  "tags": ["culture", "temple", "rules"],
+  "setting": "Ты собираешься посетить храм. Нужно спросить про правила, одежду (сарунг), можно ли фотографировать и где вход.",
+  "roles": {
+    "student": "посетитель",
+    "tutor": "охранник/гид"
+  },
+  "goals": [
+    "спросить, можно ли войти",
+    "уточнить правила одежды",
+    "спросить про фото",
+    "поблагодарить"
+  ],
+  "must_use": [
+    "boleh masuk",
+    "harus",
+    "pakai",
+    "foto",
+    "di mana"
+  ],
+  "sample_dialog": [
+    { "role": "student", "text": "Permisi, boleh masuk?" },
+    { "role": "tutor", "text": "Boleh. Tapi harus pakai sarung." },
+    { "role": "student", "text": "Oke. Di mana saya bisa sewa sarung?" },
+    { "role": "tutor", "text": "Di depan, dekat pintu masuk." },
+    { "role": "student", "text": "Boleh foto di dalam?" },
+    { "role": "tutor", "text": "Boleh, tapi jangan saat orang berdoa." }
+  ]
+}
+

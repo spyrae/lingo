@@ -1,0 +1,36 @@
+{
+  "id": "scenario-06",
+  "title": "Аптека: купить лекарства и объяснить симптомы",
+  "title_id": "Pharmacy symptoms",
+  "order": 6,
+  "difficulty": 2,
+  "estimated_time": 10,
+  "tags": ["health", "pharmacy", "polite"],
+  "setting": "Ты в аптеке. Нужно объяснить симптомы, попросить лекарство, уточнить как принимать и есть ли противопоказания.",
+  "roles": {
+    "student": "покупатель",
+    "tutor": "фармацевт"
+  },
+  "goals": [
+    "объяснить симптомы (голова/живот/простуда)",
+    "попросить лекарство",
+    "спросить как принимать",
+    "уточнить предупреждения"
+  ],
+  "must_use": [
+    "saya sakit",
+    "kepala",
+    "perut",
+    "obat",
+    "berapa kali sehari"
+  ],
+  "sample_dialog": [
+    { "role": "student", "text": "Permisi, saya sakit. Kepala pusing." },
+    { "role": "tutor", "text": "Oh. Mau obat sakit kepala?" },
+    { "role": "student", "text": "Iya, tolong. Minum bagaimana? Berapa kali sehari?" },
+    { "role": "tutor", "text": "Dua kali sehari setelah makan. Banyak minum air." },
+    { "role": "student", "text": "Oke. Ada efek samping?" },
+    { "role": "tutor", "text": "Biasanya aman, tapi kalau alergi, berhenti." }
+  ]
+}
+

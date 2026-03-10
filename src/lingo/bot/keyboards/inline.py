@@ -1,5 +1,6 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
+from lingo.content.practice_scenarios import ScenarioMeta
 from lingo.memory.categories import WORD_CATEGORIES
 
 
@@ -94,6 +95,21 @@ def get_lessons_list_keyboard(lesson_ids: list[str], titles: dict[str, str]) -> 
             [InlineKeyboardButton(text=title, callback_data=f"lesson:open:{lesson_id}")]
         )
     rows.append([InlineKeyboardButton(text="◀️ Назад", callback_data="lesson:back")])
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+def get_practice_scenarios_keyboard(metas: list[ScenarioMeta]) -> InlineKeyboardMarkup:
+    rows: list[list[InlineKeyboardButton]] = []
+    for meta in metas:
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    text=f"{meta.order}. {meta.title} (★{meta.difficulty})",
+                    callback_data=f"practice_scenario:{meta.id}",
+                )
+            ]
+        )
+    rows.append([InlineKeyboardButton(text="▶️ Без сценария", callback_data="practice_scenario:none")])
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 

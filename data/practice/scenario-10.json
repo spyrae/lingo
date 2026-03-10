@@ -1,0 +1,36 @@
+{
+  "id": "scenario-10",
+  "title": "Экстренная ситуация: потерял паспорт",
+  "title_id": "Emergency passport",
+  "order": 10,
+  "difficulty": 3,
+  "estimated_time": 10,
+  "tags": ["emergency", "help", "police"],
+  "setting": "Ты потерял паспорт. Нужно объяснить ситуацию, попросить помощь, указать где видел в последний раз и спросить, что делать дальше.",
+  "roles": {
+    "student": "турист",
+    "tutor": "полицейский/сотрудник"
+  },
+  "goals": [
+    "сказать, что потерял паспорт",
+    "описать, где и когда видел в последний раз",
+    "попросить помощь/заявление",
+    "спросить, что делать дальше"
+  ],
+  "must_use": [
+    "saya kehilangan paspor",
+    "tolong",
+    "di mana",
+    "terakhir",
+    "apa yang harus saya lakukan"
+  ],
+  "sample_dialog": [
+    { "role": "student", "text": "Permisi, saya kehilangan paspor. Tolong." },
+    { "role": "tutor", "text": "Tenang. Kamu kehilangan di mana?" },
+    { "role": "student", "text": "Terakhir saya lihat di hotel, tadi pagi." },
+    { "role": "tutor", "text": "Oke. Kita buat laporan. Ada foto paspor?" },
+    { "role": "student", "text": "Ada di HP. Apa yang harus saya lakukan sekarang?" },
+    { "role": "tutor", "text": "Setelah laporan, kamu bisa ke kedutaan dengan surat ini." }
+  ]
+}
+

@@ -1,12 +1,16 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 from aiogram import F, Router
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
-from aiogram.types import Message
+from aiogram.types import CallbackQuery, Message
 
 from lingo.config import Settings, get_settings
+from lingo.content.practice_scenarios import PracticeScenarioLoader
+from lingo.bot.keyboards.inline import get_practice_scenarios_keyboard
 from lingo.gamification.achievement_manager import AchievementManager, format_achievement_unlocked
 from lingo.memory.database import Database
 from lingo.memory.repositories.user_repository import UserRepository
@@ -16,6 +20,7 @@ router = Router(name="practice")
 
 
 class PracticeStates(StatesGroup):
+    choosing_scenario = State()
     chatting = State()
 
 
@@ -30,6 +35,9 @@ Rules:
 
 Student profile:
 - Level: {level}
+
+Scenario (optional):
+{scenario_block}
 
 Output format (plain text, no markdown tables):
 🇮🇩 ...
@@ -58,6 +66,41 @@ def _format_prompt(*, system: str, history: list[dict[str, str]], user_message: 
     return "\n".join(lines)
 
 
+def _scenario_block(scenario: dict[str, object] | None) -> str:
+    if not scenario:
+        return "- None"
+    title = str(scenario.get("title", ""))
+    setting = str(scenario.get("setting", ""))
+    goals = scenario.get("goals") or []
+    must_use = scenario.get("must_use") or []
+    sample = scenario.get("sample_dialog") or []
+
+    def bullet(items: list[object]) -> str:
+        return "\n".join(f"- {str(x)}" for x in items[:8]) if items else "- (none)"
+
+    sample_lines: list[str] = []
+    if isinstance(sample, list):
+        for t in sample[:6]:
+            if isinstance(t, dict):
+                role = str(t.get("role", "")).upper()
+                text = str(t.get("text", ""))
+                if role and text:
+                    sample_lines.append(f"{role}: {text}")
+
+    return "\n".join(
+        [
+            f"- Title: {title}",
+            f"- Setting: {setting}",
+            "- Goals:",
+            bullet(list(goals) if isinstance(goals, list) else []),
+            "- Must use (try to include naturally):",
+            bullet(list(must_use) if isinstance(must_use, list) else []),
+            "- Sample dialog style:",
+            "\n".join(sample_lines) if sample_lines else "- (none)",
+        ]
+    )
+
+
 @router.message(Command("practice"))
 @router.message(F.text == "💬 Практика")
 async def start_practice(message: Message, state: FSMContext, db: Database) -> None:
@@ -77,14 +120,42 @@ async def start_practice(message: Message, state: FSMContext, db: Database) -> N
     for a in unlocked:
         await message.answer(format_achievement_unlocked(a))
 
-    await state.set_state(PracticeStates.chatting)
-    await state.update_data(history=[], level=user.level, practice_messages=0)
+    scenarios_dir = Path(__file__).resolve().parents[4] / "data" / "practice"
+    loader = PracticeScenarioLoader(scenarios_dir)
+    metas = loader.list_metas()
+
+    await state.set_state(PracticeStates.choosing_scenario)
+    await state.update_data(
+        history=[],
+        level=user.level,
+        practice_messages=0,
+        scenario_id=None,
+    )
 
     await message.answer(
-        "💬 Практика началась.\n\n"
+        "💬 Практика.\n\nВыбери сценарий (или начни без сценария):",
+        reply_markup=get_practice_scenarios_keyboard(metas),
+    )
+
+
+@router.callback_query(F.data.startswith("practice_scenario:"))
+async def choose_scenario(callback: CallbackQuery, state: FSMContext) -> None:
+    if callback.message is None:
+        return
+
+    scenario_id = (callback.data or "").split(":", 1)[1].strip()
+    if scenario_id == "none":
+        await state.update_data(scenario_id=None)
+    else:
+        await state.update_data(scenario_id=scenario_id)
+
+    await state.set_state(PracticeStates.chatting)
+    await callback.message.answer(
+        "✅ Сценарий выбран.\n\n"
         "Напиши фразу на индонезийском (или по-русски, если нужно).\n"
         "Чтобы закончить — /stop.",
     )
+    await callback.answer()
 
 
 @router.message(Command("stop"))
@@ -101,6 +172,7 @@ async def practice_chat(message: Message, state: FSMContext, db: Database) -> No
     data = await state.get_data()
     history: list[dict[str, str]] = list(data.get("history", []))
     level: str = str(data.get("level", "beginner"))
+    scenario_id: str | None = data.get("scenario_id")
 
     settings: Settings = get_settings()
     codex = CodexService(
@@ -108,7 +180,12 @@ async def practice_chat(message: Message, state: FSMContext, db: Database) -> No
         timeout_seconds=settings.codex_timeout_seconds,
     )
 
-    system = SYSTEM_PROMPT_TEMPLATE.format(level=level)
+    scenario = None
+    if scenario_id:
+        scenarios_dir = Path(__file__).resolve().parents[4] / "data" / "practice"
+        scenario = PracticeScenarioLoader(scenarios_dir).load(scenario_id)
+
+    system = SYSTEM_PROMPT_TEMPLATE.format(level=level, scenario_block=_scenario_block(scenario))
     prompt = _format_prompt(system=system, history=history, user_message=message.text)
 
     history.append({"role": "user", "content": message.text})

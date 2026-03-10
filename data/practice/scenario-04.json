@@ -1,0 +1,36 @@
+{
+  "id": "scenario-04",
+  "title": "Отель: заселение и вопросы",
+  "title_id": "Hotel check-in",
+  "order": 4,
+  "difficulty": 2,
+  "estimated_time": 10,
+  "tags": ["hotel", "polite", "requests"],
+  "setting": "Ты приехал в отель. Нужно заселиться, уточнить время завтрака, попросить пароль Wi‑Fi и попросить другой номер/вид.",
+  "roles": {
+    "student": "гость отеля",
+    "tutor": "администратор"
+  },
+  "goals": [
+    "сказать, что у тебя бронь",
+    "дать имя и паспорт",
+    "спросить про завтрак и Wi‑Fi",
+    "попросить комнату потише/с видом"
+  ],
+  "must_use": [
+    "saya ada reservasi",
+    "atas nama",
+    "sarapan",
+    "kata sandi wifi",
+    "bisa ganti kamar"
+  ],
+  "sample_dialog": [
+    { "role": "student", "text": "Selamat malam. Saya ada reservasi." },
+    { "role": "tutor", "text": "Selamat malam. Atas nama siapa?" },
+    { "role": "student", "text": "Atas nama Roman. Ini paspor." },
+    { "role": "tutor", "text": "Baik. Sarapan jam 7-10. Ini kunci kamar." },
+    { "role": "student", "text": "Terima kasih. Kata sandi Wi-Fi apa?" },
+    { "role": "tutor", "text": "Password: bali2026. Perlu bantuan lain?" }
+  ]
+}
+

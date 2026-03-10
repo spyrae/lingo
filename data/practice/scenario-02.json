@@ -1,0 +1,36 @@
+{
+  "id": "scenario-02",
+  "title": "Магазин: покупка сувениров и торг",
+  "title_id": "Souvenir shop",
+  "order": 2,
+  "difficulty": 1,
+  "estimated_time": 8,
+  "tags": ["shopping", "prices", "polite"],
+  "setting": "Ты в магазине сувениров. Хочешь купить подарок, спросить цену, попросить скидку и выбрать размер/цвет.",
+  "roles": {
+    "student": "турист из России",
+    "tutor": "продавец"
+  },
+  "goals": [
+    "спросить, сколько стоит",
+    "попросить скидку",
+    "уточнить размер/цвет",
+    "вежливо завершить покупку"
+  ],
+  "must_use": [
+    "berapa",
+    "mahal",
+    "boleh kurang",
+    "warna",
+    "saya ambil"
+  ],
+  "sample_dialog": [
+    { "role": "student", "text": "Permisi, ini berapa?" },
+    { "role": "tutor", "text": "Itu 150 ribu. Bagus, ya." },
+    { "role": "student", "text": "Wah mahal. Boleh kurang?" },
+    { "role": "tutor", "text": "Boleh. 120 ribu, ya. Mau warna apa?" },
+    { "role": "student", "text": "Warna biru. Oke, saya ambil." },
+    { "role": "tutor", "text": "Terima kasih! Saya bungkus." }
+  ]
+}
+

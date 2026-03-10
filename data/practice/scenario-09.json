@@ -1,0 +1,36 @@
+{
+  "id": "scenario-09",
+  "title": "Знакомство: представиться и обменяться контактами",
+  "title_id": "Meet and contacts",
+  "order": 9,
+  "difficulty": 2,
+  "estimated_time": 9,
+  "tags": ["smalltalk", "contacts", "polite"],
+  "setting": "Ты познакомился с человеком в коворкинге/кафе. Нужно представиться, рассказать чем занимаешься, и вежливо попросить контакт.",
+  "roles": {
+    "student": "новый знакомый",
+    "tutor": "собеседник"
+  },
+  "goals": [
+    "представиться",
+    "рассказать, чем занимаешься",
+    "спросить, чем занимается собеседник",
+    "попросить контакт (WhatsApp/Instagram)"
+  ],
+  "must_use": [
+    "kerja",
+    "saya di sini",
+    "kamu kerja apa",
+    "boleh minta",
+    "nomor whatsapp"
+  ],
+  "sample_dialog": [
+    { "role": "student", "text": "Halo! Nama saya Roman. Saya kerja online." },
+    { "role": "tutor", "text": "Halo Roman. Saya Ayu. Saya kerja di hotel." },
+    { "role": "student", "text": "Oh bagus. Kamu kerja apa di hotel?" },
+    { "role": "tutor", "text": "Saya di resepsionis. Kamu tinggal di sini lama?" },
+    { "role": "student", "text": "Dua minggu. Boleh minta nomor WhatsApp?" },
+    { "role": "tutor", "text": "Boleh. Ini nomor saya." }
+  ]
+}
+

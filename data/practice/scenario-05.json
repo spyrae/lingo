@@ -1,0 +1,36 @@
+{
+  "id": "scenario-05",
+  "title": "Пляж: знакомство и small talk",
+  "title_id": "Beach small talk",
+  "order": 5,
+  "difficulty": 2,
+  "estimated_time": 9,
+  "tags": ["smalltalk", "travel", "feelings"],
+  "setting": "Ты на пляже, знакомишься с местным жителем/туристом. Нужно вежливо представиться, рассказать откуда ты, что тебе нравится, и спросить совет.",
+  "roles": {
+    "student": "турист",
+    "tutor": "новый знакомый"
+  },
+  "goals": [
+    "представиться и спросить имя",
+    "сказать откуда ты и где остановился",
+    "обсудить погоду/место",
+    "попросить совет: куда сходить"
+  ],
+  "must_use": [
+    "nama saya",
+    "saya dari",
+    "senang bertemu",
+    "bagus sekali",
+    "rekomendasi"
+  ],
+  "sample_dialog": [
+    { "role": "student", "text": "Halo! Nama saya Roman. Kamu siapa?" },
+    { "role": "tutor", "text": "Halo! Saya Wayan. Senang bertemu." },
+    { "role": "student", "text": "Saya dari Rusia. Pantai ini bagus sekali!" },
+    { "role": "tutor", "text": "Iya, bagus. Kamu tinggal di mana?" },
+    { "role": "student", "text": "Saya tinggal di Kuta. Ada rekomendasi tempat?" },
+    { "role": "tutor", "text": "Coba ke Uluwatu saat sore. Indah!" }
+  ]
+}
+

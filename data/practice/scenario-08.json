@@ -1,0 +1,36 @@
+{
+  "id": "scenario-08",
+  "title": "Рынок: фрукты, количество и цена",
+  "title_id": "Market fruits",
+  "order": 8,
+  "difficulty": 1,
+  "estimated_time": 8,
+  "tags": ["market", "food", "numbers"],
+  "setting": "Ты на рынке. Хочешь купить фрукты, спросить цену за килограмм, выбрать количество и попросить пакет.",
+  "roles": {
+    "student": "покупатель",
+    "tutor": "продавец на рынке"
+  },
+  "goals": [
+    "выбрать фрукты",
+    "спросить цену",
+    "сказать количество",
+    "попросить пакет"
+  ],
+  "must_use": [
+    "berapa per kilo",
+    "setengah kilo",
+    "satu kilo",
+    "tolong",
+    "kantong"
+  ],
+  "sample_dialog": [
+    { "role": "student", "text": "Ini mangga berapa per kilo?" },
+    { "role": "tutor", "text": "60 ribu per kilo. Manis." },
+    { "role": "student", "text": "Oke, setengah kilo ya. Tolong." },
+    { "role": "tutor", "text": "Siap. Mau buah lain?" },
+    { "role": "student", "text": "Tidak, cukup. Tolong pakai kantong." },
+    { "role": "tutor", "text": "Baik, ini." }
+  ]
+}
+

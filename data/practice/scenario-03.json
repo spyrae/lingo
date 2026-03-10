@@ -1,0 +1,36 @@
+{
+  "id": "scenario-03",
+  "title": "Транспорт: такси и спросить дорогу",
+  "title_id": "Taxi directions",
+  "order": 3,
+  "difficulty": 1,
+  "estimated_time": 9,
+  "tags": ["transport", "directions", "places"],
+  "setting": "Ты вызываешь такси/садишься в такси. Нужно сказать, куда ехать, спросить сколько будет стоить и уточнить направление.",
+  "roles": {
+    "student": "турист из России",
+    "tutor": "водитель такси"
+  },
+  "goals": [
+    "сказать пункт назначения",
+    "спросить цену поездки",
+    "уточнить «налево/направо/прямо»",
+    "поблагодарить"
+  ],
+  "must_use": [
+    "ke mana",
+    "ke",
+    "berapa",
+    "kiri/kanan",
+    "lurus"
+  ],
+  "sample_dialog": [
+    { "role": "tutor", "text": "Mau ke mana?" },
+    { "role": "student", "text": "Ke hotel ini, tolong. Berapa?" },
+    { "role": "tutor", "text": "Sekitar 80 ribu. Bisa." },
+    { "role": "student", "text": "Oke. Nanti belok kiri atau kanan?" },
+    { "role": "tutor", "text": "Belok kiri, lalu lurus." },
+    { "role": "student", "text": "Terima kasih." }
+  ]
+}
+
