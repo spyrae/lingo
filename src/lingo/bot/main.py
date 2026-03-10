@@ -1,15 +1,16 @@
 import logging
 from collections.abc import Awaitable, Callable
+from pathlib import Path
 from typing import Any
 
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
-from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.types import Update
 
 from lingo.config import Settings
 from lingo.bot.middlewares.db import DbMiddleware
+from lingo.bot.storage import SQLiteStorage
 from lingo.memory.database import Database
 
 logger = logging.getLogger(__name__)
@@ -22,15 +23,16 @@ def create_bot(settings: Settings) -> Bot:
     )
 
 
-def create_dispatcher() -> Dispatcher:
-    from lingo.bot.handlers import commands, flashcards, lessons, onboarding, practice, reminders
+def create_dispatcher(storage: SQLiteStorage) -> Dispatcher:
+    from lingo.bot.handlers import commands, flashcards, lessons, onboarding, practice, reminders, stats
 
-    dp = Dispatcher(storage=MemoryStorage())
+    dp = Dispatcher(storage=storage)
     dp.include_router(onboarding.router)
     dp.include_router(commands.router)
     dp.include_router(flashcards.router)
     dp.include_router(lessons.router)
     dp.include_router(practice.router)
+    dp.include_router(stats.router)
     dp.include_router(reminders.router)
     return dp
 
@@ -95,7 +97,11 @@ async def _start_reminder_scheduler(bot: Bot, db: Database) -> Any:
 
 async def run_bot(settings: Settings) -> None:
     bot = create_bot(settings)
-    dp = create_dispatcher()
+
+    fsm_db_path = Path(settings.db_path).parent / "fsm.db"
+    storage = SQLiteStorage(fsm_db_path)
+
+    dp = create_dispatcher(storage)
     dp.update.middleware(create_auth_middleware(settings))
 
     logger.info("Starting bot polling...")
@@ -109,5 +115,6 @@ async def run_bot(settings: Settings) -> None:
     finally:
         if scheduler is not None:
             scheduler.shutdown(wait=False)
+        await storage.close()
         await db.disconnect()
         await bot.session.close()
