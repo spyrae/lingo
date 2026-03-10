@@ -9,6 +9,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.types import Update
 
 from lingo.config import Settings
+from lingo.memory.database import Database
 
 logger = logging.getLogger(__name__)
 
@@ -69,7 +70,13 @@ async def run_bot(settings: Settings) -> None:
 
     logger.info("Starting bot polling...")
     try:
+        db = Database(settings.db_path)
+        await db.connect()
+        dp["db"] = db
         await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
     finally:
+        db_obj = dp.get("db")
+        if isinstance(db_obj, Database):
+            await db_obj.disconnect()
         await bot.session.close()
 

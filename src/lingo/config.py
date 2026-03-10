@@ -10,6 +10,10 @@ class Settings(BaseSettings):
     )
 
     telegram_bot_token: str = Field(description="Telegram Bot API token")
+    db_path: str = Field(
+        default="data/lingo.db",
+        description="SQLite database path",
+    )
     allowed_user_ids: list[int] = Field(
         default_factory=list,
         description="List of Telegram user IDs allowed to use the bot",

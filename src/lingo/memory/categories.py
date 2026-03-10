@@ -1,0 +1,73 @@
+WORD_CATEGORIES: dict[str, dict[str, object]] = {
+    "greetings": {
+        "name": "Приветствия",
+        "name_id": "Salam",
+        "icon": "👋",
+        "order": 1,
+        "description": "Базовые приветствия и вежливые фразы",
+    },
+    "numbers": {
+        "name": "Числа",
+        "name_id": "Angka",
+        "icon": "🔢",
+        "order": 2,
+        "description": "Числа и счёт",
+    },
+    "food": {
+        "name": "Еда и напитки",
+        "name_id": "Makanan",
+        "icon": "🍜",
+        "order": 3,
+        "description": "Названия блюд, продуктов и напитков",
+    },
+    "transport": {
+        "name": "Транспорт",
+        "name_id": "Transportasi",
+        "icon": "🚗",
+        "order": 4,
+        "description": "Виды транспорта и направления",
+    },
+    "places": {
+        "name": "Места",
+        "name_id": "Tempat",
+        "icon": "🏠",
+        "order": 5,
+        "description": "Локации и здания",
+    },
+    "time": {
+        "name": "Время",
+        "name_id": "Waktu",
+        "icon": "⏰",
+        "order": 6,
+        "description": "Дни, месяцы, время суток",
+    },
+    "family": {
+        "name": "Семья",
+        "name_id": "Keluarga",
+        "icon": "👨‍👩‍👧",
+        "order": 7,
+        "description": "Члены семьи и отношения",
+    },
+    "verbs": {
+        "name": "Глаголы",
+        "name_id": "Kata kerja",
+        "icon": "🏃",
+        "order": 8,
+        "description": "Основные действия",
+    },
+    "adjectives": {
+        "name": "Прилагательные",
+        "name_id": "Kata sifat",
+        "icon": "🎨",
+        "order": 9,
+        "description": "Описания и характеристики",
+    },
+    "phrases": {
+        "name": "Фразы",
+        "name_id": "Frasa",
+        "icon": "💬",
+        "order": 10,
+        "description": "Полезные разговорные выражения",
+    },
+}
+
