@@ -25,15 +25,23 @@ class Settings(BaseSettings):
     )
     openai_api_key: str = Field(
         default="",
-        description="OpenAI API key for AI practice",
+        description="OpenAI API key for AI practice (legacy, unused with Claude CLI)",
     )
     openai_model: str = Field(
         default="gpt-4.1-nano",
-        description="OpenAI model for AI practice",
+        description="OpenAI model for AI practice (legacy, unused with Claude CLI)",
     )
     openai_timeout_seconds: int = Field(
         default=60,
-        description="Timeout for OpenAI API call",
+        description="Timeout for OpenAI API call (legacy, unused with Claude CLI)",
+    )
+    claude_model: str = Field(
+        default="sonnet",
+        description="Claude model for AI practice (sonnet, opus, haiku)",
+    )
+    claude_timeout_seconds: int = Field(
+        default=120,
+        description="Timeout for Claude CLI subprocess",
     )
     allowed_user_ids: list[int] = Field(
         default_factory=list,

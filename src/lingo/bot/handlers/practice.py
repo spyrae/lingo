@@ -14,7 +14,7 @@ from lingo.bot.keyboards.inline import get_practice_scenarios_keyboard
 from lingo.gamification.achievement_manager import AchievementManager, format_achievement_unlocked
 from lingo.memory.database import Database
 from lingo.memory.repositories.user_repository import UserRepository
-from lingo.services.codex_service import CodexService
+from lingo.services.claude_service import ClaudeService
 
 router = Router(name="practice")
 
@@ -176,10 +176,9 @@ async def practice_chat(message: Message, state: FSMContext, db: Database) -> No
     scenario_id: str | None = data.get("scenario_id")
 
     settings: Settings = get_settings()
-    codex = CodexService(
-        model=settings.openai_model,
-        timeout_seconds=settings.openai_timeout_seconds,
-        api_key=settings.openai_api_key,
+    claude = ClaudeService(
+        model=settings.claude_model,
+        timeout_seconds=settings.claude_timeout_seconds,
     )
 
     scenario = None
@@ -200,7 +199,7 @@ async def practice_chat(message: Message, state: FSMContext, db: Database) -> No
     await state.update_data(history=history)
 
     try:
-        reply = await codex.chat(prompt=prompt)
+        reply = await claude.chat(prompt=prompt)
     except Exception as e:
         await message.answer(f"❌ Ошибка AI: {e}")
         return
