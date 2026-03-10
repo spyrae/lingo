@@ -44,12 +44,13 @@ class SQLiteStorage(BaseStorage):
     async def set_state(self, key: StorageKey, state: str | None = None) -> None:
         conn = await self._ensure_conn()
         k = _make_key(key)
+        state_str = state.state if hasattr(state, "state") else state
         await conn.execute(
             """
             INSERT INTO fsm_states (key, state) VALUES (?, ?)
             ON CONFLICT(key) DO UPDATE SET state = excluded.state
             """,
-            (k, state),
+            (k, state_str),
         )
         await conn.commit()
 
