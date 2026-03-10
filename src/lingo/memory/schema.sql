@@ -92,6 +92,7 @@ CREATE TABLE IF NOT EXISTS user_lessons (
 
   started_at TIMESTAMP,
   completed_at TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
   UNIQUE(user_id, lesson_id)

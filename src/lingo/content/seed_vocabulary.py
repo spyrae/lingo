@@ -12,11 +12,10 @@ from lingo.memory.repositories.vocabulary_repository import VocabularyRepository
 logger = logging.getLogger(__name__)
 
 
-DEFAULT_TSV_PATH = Path(__file__).resolve().parents[3] / "data" / "vocabulary" / "vocab-500.tsv"
-
-
-async def seed_vocabulary(*, tsv_path: Path = DEFAULT_TSV_PATH) -> int:
+async def seed_vocabulary(*, tsv_path: Path | None = None) -> int:
     settings = Settings()
+    if tsv_path is None:
+        tsv_path = Path(settings.data_dir) / "vocabulary" / "vocab-500.tsv"
     db = Database(settings.db_path)
     await db.connect()
     try:

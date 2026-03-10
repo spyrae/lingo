@@ -15,6 +15,7 @@ from lingo.bot.keyboards.inline import (
     get_lesson_theory_keyboard,
     get_lessons_list_keyboard,
 )
+from lingo.config import get_settings
 from lingo.content.grammar_loader import GrammarLessonLoader
 from lingo.gamification.achievement_manager import AchievementManager, format_achievement_unlocked
 from lingo.memory.database import Database
@@ -37,8 +38,7 @@ class ExerciseCheckResult:
 
 
 def _lessons_dir() -> Path:
-    # repo_root/data/grammar
-    return Path(__file__).resolve().parents[4] / "data" / "grammar"
+    return Path(get_settings().data_dir) / "grammar"
 
 
 def _normalize(text: str) -> str:
@@ -155,7 +155,8 @@ async def _check_exercise(ex: dict, user_text: str | None, choice_idx: int | Non
     explanation = ex.get("explanation")
 
     if ex_type == "choice":
-        assert choice_idx is not None
+        if choice_idx is None:
+            raise ValueError("choice_idx is required for choice exercises")
         correct_idx = int(ex["correct"])
         correct_text = str(ex["options"][correct_idx])
         return ExerciseCheckResult(

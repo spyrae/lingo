@@ -1,75 +1,67 @@
 from __future__ import annotations
 
-import asyncio
+import json
 import os
-import subprocess
-import contextlib
-from dataclasses import dataclass
+
+import httpx
 
 
-class CodexNotInstalledError(RuntimeError):
+class OpenAIError(RuntimeError):
     pass
 
 
-class CodexTimeoutError(RuntimeError):
+class OpenAITimeoutError(OpenAIError):
     pass
-
-
-@dataclass(frozen=True)
-class CodexChatRequest:
-    prompt: str
-    timeout_seconds: int
 
 
 class CodexService:
     """
-    Thin wrapper around Codex CLI.
+    Async wrapper around OpenAI Chat Completions API.
 
-    NOTE: Codex CLI flags can vary by installation; we keep invocation conservative:
-    - feed full prompt via stdin
-    - rely on environment (OPENAI_API_KEY) being present
+    Replaces the former Codex CLI subprocess approach so that the bot
+    works inside Docker without needing a CLI binary.
     """
 
-    def __init__(self, *, command: str = "codex", timeout_seconds: int = 60) -> None:
-        self._command = command
-        self._timeout_seconds = timeout_seconds
+    BASE_URL = "https://api.openai.com/v1/chat/completions"
+
+    def __init__(
+        self,
+        *,
+        model: str = "gpt-4.1-nano",
+        timeout_seconds: int = 60,
+        api_key: str | None = None,
+    ) -> None:
+        self._model = model
+        self._timeout = timeout_seconds
+        self._api_key = api_key or os.environ.get("OPENAI_API_KEY", "")
 
     async def chat(self, *, prompt: str) -> str:
-        req = CodexChatRequest(prompt=prompt, timeout_seconds=self._timeout_seconds)
-        return await self._run(req)
+        if not self._api_key:
+            raise OpenAIError("OPENAI_API_KEY is not set")
 
-    async def _run(self, req: CodexChatRequest) -> str:
-        env = os.environ.copy()
-        if not env.get("OPENAI_API_KEY"):
-            raise RuntimeError("OPENAI_API_KEY is not set (required for Codex CLI)")
+        headers = {
+            "Authorization": f"Bearer {self._api_key}",
+            "Content-Type": "application/json",
+        }
+        payload = {
+            "model": self._model,
+            "messages": [{"role": "user", "content": prompt}],
+            "temperature": 0.7,
+            "max_tokens": 1024,
+        }
 
-        try:
-            proc = await asyncio.create_subprocess_exec(
-                self._command,
-                stdin=asyncio.subprocess.PIPE,
-                stdout=asyncio.subprocess.PIPE,
-                stderr=asyncio.subprocess.PIPE,
-                env=env,
-            )
-        except FileNotFoundError as e:
-            raise CodexNotInstalledError(
-                f"Codex CLI not found: '{self._command}'. Install Codex CLI or set CODEX_COMMAND."
-            ) from e
+        async with httpx.AsyncClient(timeout=self._timeout) as client:
+            try:
+                resp = await client.post(self.BASE_URL, headers=headers, json=payload)
+            except httpx.TimeoutException as e:
+                raise OpenAITimeoutError("OpenAI API timed out") from e
 
-        try:
-            stdout, stderr = await asyncio.wait_for(
-                proc.communicate(input=req.prompt.encode("utf-8")),
-                timeout=req.timeout_seconds,
-            )
-        except asyncio.TimeoutError as e:
-            with contextlib.suppress(Exception):
-                proc.kill()
-            raise CodexTimeoutError("Codex CLI timed out") from e
+            if resp.status_code != 200:
+                raise OpenAIError(f"OpenAI API error {resp.status_code}: {resp.text}")
 
-        if proc.returncode != 0:
-            err = (stderr or b"").decode("utf-8", errors="replace").strip()
-            raise subprocess.CalledProcessError(proc.returncode or 1, self._command, err)
+            data = resp.json()
+            choices = data.get("choices", [])
+            if not choices:
+                raise OpenAIError("OpenAI returned no choices")
 
-        out = (stdout or b"").decode("utf-8", errors="replace").strip()
-        return out
-
+            return str(choices[0]["message"]["content"]).strip()

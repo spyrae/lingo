@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   lingo-bot:
     build: .
@@ -9,9 +7,9 @@ services:
       ALLOWED_USER_IDS: ${ALLOWED_USER_IDS:-[]}
       ALLOW_ALL_USERS: ${ALLOW_ALL_USERS:-false}
       DB_PATH: ${DB_PATH:-/app/data/lingo.db}
-      CODEX_COMMAND: ${CODEX_COMMAND:-codex}
-      CODEX_TIMEOUT_SECONDS: ${CODEX_TIMEOUT_SECONDS:-60}
       OPENAI_API_KEY: ${OPENAI_API_KEY}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4.1-nano}
+      OPENAI_TIMEOUT_SECONDS: ${OPENAI_TIMEOUT_SECONDS:-60}
     volumes:
       - ./data:/app/data
 

@@ -1,5 +1,10 @@
+from pathlib import Path
+
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+# Resolve once: repo_root/data (or /app/data in Docker).
+_DEFAULT_DATA_DIR = str(Path(__file__).resolve().parents[2] / "data")
 
 
 class Settings(BaseSettings):
@@ -14,13 +19,21 @@ class Settings(BaseSettings):
         default="data/lingo.db",
         description="SQLite database path",
     )
-    codex_command: str = Field(
-        default="codex",
-        description="Codex CLI command name (e.g. codex)",
+    data_dir: str = Field(
+        default=_DEFAULT_DATA_DIR,
+        description="Root directory for content data (grammar, vocabulary, scenarios)",
     )
-    codex_timeout_seconds: int = Field(
+    openai_api_key: str = Field(
+        default="",
+        description="OpenAI API key for AI practice",
+    )
+    openai_model: str = Field(
+        default="gpt-4.1-nano",
+        description="OpenAI model for AI practice",
+    )
+    openai_timeout_seconds: int = Field(
         default=60,
-        description="Timeout for Codex CLI call",
+        description="Timeout for OpenAI API call",
     )
     allowed_user_ids: list[int] = Field(
         default_factory=list,
@@ -34,4 +47,3 @@ class Settings(BaseSettings):
 
 def get_settings() -> Settings:
     return Settings()
-

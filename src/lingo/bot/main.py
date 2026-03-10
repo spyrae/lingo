@@ -23,7 +23,7 @@ def create_bot(settings: Settings) -> Bot:
 
 
 def create_dispatcher() -> Dispatcher:
-    from lingo.bot.handlers import commands, flashcards, lessons, menu, onboarding, practice, reminders
+    from lingo.bot.handlers import commands, flashcards, lessons, onboarding, practice, reminders
 
     dp = Dispatcher(storage=MemoryStorage())
     dp.include_router(onboarding.router)
@@ -32,7 +32,6 @@ def create_dispatcher() -> Dispatcher:
     dp.include_router(lessons.router)
     dp.include_router(practice.router)
     dp.include_router(reminders.router)
-    dp.include_router(menu.router)
     return dp
 
 
@@ -70,6 +69,30 @@ def create_auth_middleware(settings: Settings) -> MiddlewareType:
     return auth_middleware
 
 
+async def _start_reminder_scheduler(bot: Bot, db: Database) -> Any:
+    """Start APScheduler to fire reminders every minute."""
+    try:
+        from apscheduler.schedulers.asyncio import AsyncIOScheduler
+        from apscheduler.triggers.cron import CronTrigger
+    except ImportError:
+        logger.warning("apscheduler not installed — reminders disabled")
+        return None
+
+    from lingo.reminders.run_once import send_reminders
+
+    scheduler = AsyncIOScheduler()
+    scheduler.add_job(
+        send_reminders,
+        CronTrigger(minute="*"),
+        kwargs={"bot": bot, "db": db},
+        id="daily_reminders",
+        replace_existing=True,
+    )
+    scheduler.start()
+    logger.info("Reminder scheduler started (every minute)")
+    return scheduler
+
+
 async def run_bot(settings: Settings) -> None:
     bot = create_bot(settings)
     dp = create_dispatcher()
@@ -77,11 +100,14 @@ async def run_bot(settings: Settings) -> None:
 
     logger.info("Starting bot polling...")
     db = Database(settings.db_path)
+    scheduler = None
     try:
         await db.connect()
         dp.update.middleware(DbMiddleware(db))
+        scheduler = await _start_reminder_scheduler(bot, db)
         await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
     finally:
+        if scheduler is not None:
+            scheduler.shutdown(wait=False)
         await db.disconnect()
         await bot.session.close()
-

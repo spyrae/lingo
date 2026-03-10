@@ -47,7 +47,6 @@ Output format (plain text, no markdown tables):
 
 
 def _format_prompt(*, system: str, history: list[dict[str, str]], user_message: str) -> str:
-    # Keep prompt readable and stable for CLI tools.
     lines: list[str] = []
     lines.append("SYSTEM:")
     lines.append(system)
@@ -120,7 +119,8 @@ async def start_practice(message: Message, state: FSMContext, db: Database) -> N
     for a in unlocked:
         await message.answer(format_achievement_unlocked(a))
 
-    scenarios_dir = Path(__file__).resolve().parents[4] / "data" / "practice"
+    settings = get_settings()
+    scenarios_dir = Path(settings.data_dir) / "practice"
     loader = PracticeScenarioLoader(scenarios_dir)
     metas = loader.list_metas()
 
@@ -176,13 +176,14 @@ async def practice_chat(message: Message, state: FSMContext, db: Database) -> No
 
     settings: Settings = get_settings()
     codex = CodexService(
-        command=settings.codex_command,
-        timeout_seconds=settings.codex_timeout_seconds,
+        model=settings.openai_model,
+        timeout_seconds=settings.openai_timeout_seconds,
+        api_key=settings.openai_api_key,
     )
 
     scenario = None
     if scenario_id:
-        scenarios_dir = Path(__file__).resolve().parents[4] / "data" / "practice"
+        scenarios_dir = Path(settings.data_dir) / "practice"
         scenario = PracticeScenarioLoader(scenarios_dir).load(scenario_id)
 
     system = SYSTEM_PROMPT_TEMPLATE.format(level=level, scenario_block=_scenario_block(scenario))
@@ -194,15 +195,13 @@ async def practice_chat(message: Message, state: FSMContext, db: Database) -> No
     try:
         reply = await codex.chat(prompt=prompt)
     except Exception as e:
-        await message.answer(f"❌ Ошибка Codex: {e}")
+        await message.answer(f"❌ Ошибка AI: {e}")
         return
 
     history.append({"role": "assistant", "content": reply})
     await state.update_data(history=history)
     await message.answer(reply)
 
-    # XP: простая мотивация — 5 XP за каждое сообщение пользователя в практике
     practice_messages = int(data.get("practice_messages", 0)) + 1
     await state.update_data(practice_messages=practice_messages)
     await UserRepository(db).add_xp(message.from_user.id, 5)
-

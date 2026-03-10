@@ -77,7 +77,7 @@ class VocabularyRepository:
         """
         inserted = 0
         for w in words:
-            await self._db.execute(
+            cursor = await self._db.execute(
                 """
                 INSERT OR IGNORE INTO vocabulary
                   (indonesian, russian, category, difficulty, part_of_speech, examples_json, notes)
@@ -93,7 +93,8 @@ class VocabularyRepository:
                     w.get("notes"),
                 ),
             )
-            inserted += 1
+            if getattr(cursor, "rowcount", 0) > 0:
+                inserted += 1
         await self._db.commit()
         return inserted
 
