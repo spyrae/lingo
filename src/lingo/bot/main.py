@@ -23,11 +23,12 @@ def create_bot(settings: Settings) -> Bot:
 
 
 def create_dispatcher() -> Dispatcher:
-    from lingo.bot.handlers import commands, menu, onboarding
+    from lingo.bot.handlers import commands, flashcards, menu, onboarding
 
     dp = Dispatcher(storage=MemoryStorage())
     dp.include_router(onboarding.router)
     dp.include_router(commands.router)
+    dp.include_router(flashcards.router)
     dp.include_router(menu.router)
     return dp
 
