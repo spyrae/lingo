@@ -22,3 +22,25 @@ python -m lingo
 - `ALLOWED_USER_IDS`: JSON-массив Telegram user_id, которым разрешён доступ (например `[123]`)
 - `ALLOW_ALL_USERS`: `true/false` — разрешить всем (не рекомендуется)
 
+### Запуск в Docker
+
+Собрать и запустить контейнер:
+
+```bash
+docker compose up --build -d
+```
+
+Нужно передать как минимум:
+
+- `TELEGRAM_BOT_TOKEN`
+- `OPENAI_API_KEY` (для Codex-практики)
+
+Пример:
+
+```bash
+TELEGRAM_BOT_TOKEN=xxx \
+OPENAI_API_KEY=yyy \
+docker compose up --build
+```
+
+
