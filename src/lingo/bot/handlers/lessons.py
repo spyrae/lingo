@@ -16,6 +16,7 @@ from lingo.bot.keyboards.inline import (
     get_lessons_list_keyboard,
 )
 from lingo.content.grammar_loader import GrammarLessonLoader
+from lingo.gamification.achievement_manager import AchievementManager, format_achievement_unlocked
 from lingo.memory.database import Database
 from lingo.memory.repositories.lesson_progress_repository import LessonProgressRepository
 from lingo.memory.repositories.user_repository import UserRepository
@@ -287,6 +288,11 @@ async def lesson_text_answer(message: Message, db: Database, state: FSMContext) 
                 await LessonProgressRepository(db).complete_lesson(internal_user_id, lesson_id, score)
                 xp_reward = int(data["lesson"].get("xp_reward", 0))
                 await UserRepository(db).add_xp(message.from_user.id, xp_reward)
+                unlocked = await AchievementManager(db).check_and_unlock(
+                    user_id=internal_user_id, telegram_id=message.from_user.id
+                )
+                for a in unlocked:
+                    await message.answer(format_achievement_unlocked(a))
 
 
 @router.callback_query(F.data.startswith("lesson:next:"))

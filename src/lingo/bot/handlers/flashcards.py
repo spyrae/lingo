@@ -12,6 +12,7 @@ from lingo.bot.keyboards.inline import (
     get_flashcard_rate_keyboard,
     get_flashcard_show_keyboard,
 )
+from lingo.gamification.achievement_manager import AchievementManager, format_achievement_unlocked
 from lingo.memory.database import Database
 from lingo.memory.repositories.user_repository import UserRepository
 from lingo.memory.repositories.user_words_repository import UserWordsRepository
@@ -156,6 +157,12 @@ async def card_rate(callback: CallbackQuery, db: Database) -> None:
 
     result = await UserWordsRepository(db).record_review(internal_user_id, word_id, quality)
     await UserRepository(db).add_xp(callback.from_user.id, result.xp_earned)
+
+    unlocked = await AchievementManager(db).check_and_unlock(
+        user_id=internal_user_id, telegram_id=callback.from_user.id
+    )
+    for a in unlocked:
+        await callback.message.answer(format_achievement_unlocked(a))
 
     # Next: prefer due cards; otherwise offer new category selection.
     due = await UserWordsRepository(db).get_due_cards(internal_user_id, limit=1)

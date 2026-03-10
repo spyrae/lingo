@@ -7,6 +7,7 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import Message
 
 from lingo.config import Settings, get_settings
+from lingo.gamification.achievement_manager import AchievementManager, format_achievement_unlocked
 from lingo.memory.database import Database
 from lingo.memory.repositories.user_repository import UserRepository
 from lingo.services.codex_service import CodexService
@@ -69,6 +70,12 @@ async def start_practice(message: Message, state: FSMContext, db: Database) -> N
     if user is None:
         await message.answer("Сначала нажми /start и пройди онбординг.")
         return
+
+    unlocked = await AchievementManager(db).check_and_unlock(
+        user_id=user.id, telegram_id=user.telegram_id, event="practice_started"
+    )
+    for a in unlocked:
+        await message.answer(format_achievement_unlocked(a))
 
     await state.set_state(PracticeStates.chatting)
     await state.update_data(history=[], level=user.level, practice_messages=0)
