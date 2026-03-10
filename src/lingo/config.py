@@ -44,6 +44,28 @@ class Settings(BaseSettings):
         description="Whether to allow access to all users",
     )
 
+    # Language configuration
+    target_language: str = Field(
+        default="Indonesian",
+        description="Target language name in English (e.g. Indonesian, Spanish, French)",
+    )
+    target_language_native: str = Field(
+        default="индонезийский",
+        description="Target language name in user's native language",
+    )
+    target_flag: str = Field(
+        default="🇮🇩",
+        description="Flag emoji for the target language",
+    )
+    native_flag: str = Field(
+        default="🇷🇺",
+        description="Flag emoji for the native/UI language",
+    )
+    welcome_phrase: str = Field(
+        default="Selamat datang!",
+        description="Welcome phrase in target language",
+    )
+
 
 def get_settings() -> Settings:
     return Settings()

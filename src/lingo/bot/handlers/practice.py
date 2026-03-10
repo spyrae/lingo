@@ -24,11 +24,11 @@ class PracticeStates(StatesGroup):
     chatting = State()
 
 
-SYSTEM_PROMPT_TEMPLATE = """You are Lingo, an Indonesian language tutor for a Russian-speaking student.
+SYSTEM_PROMPT_TEMPLATE = """You are Lingo, a {target_language} language tutor for a Russian-speaking student.
 
 Rules:
-- Student messages can be in Indonesian, Russian, or mixed.
-- Prefer replying in Indonesian appropriate to the student's level, then add Russian explanation.
+- Student messages can be in {target_language}, Russian, or mixed.
+- Prefer replying in {target_language} appropriate to the student's level, then add Russian explanation.
 - Be concise (2-4 short sentences).
 - If the student makes a mistake: show ❌ (what's wrong), ✅ (correct), and a brief explanation in Russian.
 - Introduce new words with Russian meaning in parentheses.
@@ -40,8 +40,8 @@ Scenario (optional):
 {scenario_block}
 
 Output format (plain text, no markdown tables):
-🇮🇩 ...
-🇷🇺 ...
+{target_flag} ...
+{native_flag} ...
 💡 ... (optional)
 """
 
@@ -150,9 +150,10 @@ async def choose_scenario(callback: CallbackQuery, state: FSMContext) -> None:
         await state.update_data(scenario_id=scenario_id)
 
     await state.set_state(PracticeStates.chatting)
+    settings = get_settings()
     await callback.message.answer(
         "✅ Сценарий выбран.\n\n"
-        "Напиши фразу на индонезийском (или по-русски, если нужно).\n"
+        f"Напиши фразу на {settings.target_language_native} (или по-русски, если нужно).\n"
         "Чтобы закончить — /stop.",
     )
     await callback.answer()
@@ -186,7 +187,13 @@ async def practice_chat(message: Message, state: FSMContext, db: Database) -> No
         scenarios_dir = Path(settings.data_dir) / "practice"
         scenario = PracticeScenarioLoader(scenarios_dir).load(scenario_id)
 
-    system = SYSTEM_PROMPT_TEMPLATE.format(level=level, scenario_block=_scenario_block(scenario))
+    system = SYSTEM_PROMPT_TEMPLATE.format(
+        target_language=settings.target_language,
+        target_flag=settings.target_flag,
+        native_flag=settings.native_flag,
+        level=level,
+        scenario_block=_scenario_block(scenario),
+    )
     prompt = _format_prompt(system=system, history=history, user_message=message.text)
 
     history.append({"role": "user", "content": message.text})

@@ -8,6 +8,7 @@ from aiogram.types import CallbackQuery, Message
 
 from lingo.bot.keyboards.inline import get_goal_keyboard, get_level_selection_keyboard
 from lingo.bot.keyboards.reply import get_main_menu_keyboard
+from lingo.config import Settings
 from lingo.memory.database import Database
 from lingo.memory.repositories.user_repository import UserRepository
 
@@ -20,7 +21,7 @@ class OnboardingStates(StatesGroup):
 
 
 @router.message(CommandStart())
-async def cmd_start(message: Message, state: FSMContext, db: Database) -> None:
+async def cmd_start(message: Message, state: FSMContext, db: Database, settings: Settings) -> None:
     if message.from_user is None:
         return
 
@@ -28,7 +29,7 @@ async def cmd_start(message: Message, state: FSMContext, db: Database) -> None:
     user = await repo.get_by_telegram_id(message.from_user.id)
     if user is None:
         await message.answer(
-            "🇮🇩 <b>Selamat datang!</b> Добро пожаловать в Lingo.\n\n"
+            f"{settings.target_flag} <b>{settings.welcome_phrase}</b> Добро пожаловать в Lingo.\n\n"
             "Давай настроим обучение. Какой у тебя уровень?",
             reply_markup=get_level_selection_keyboard(),
         )

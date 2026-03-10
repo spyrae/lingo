@@ -14,7 +14,7 @@ from lingo.memory.repositories.reminders_repository import RemindersRepository
 logger = logging.getLogger(__name__)
 
 
-async def _get_word_of_the_day(db: Database) -> str:
+async def _get_word_of_the_day(db: Database, settings: Settings) -> str:
     """Pick a random word from vocabulary and format it as Word of the Day."""
     row = await db.fetchone(
         "SELECT indonesian, russian, part_of_speech, category FROM vocabulary ORDER BY RANDOM() LIMIT 1"
@@ -24,12 +24,12 @@ async def _get_word_of_the_day(db: Database) -> str:
     pos = f" ({row['part_of_speech']})" if row.get("part_of_speech") else ""
     return (
         f"\n\n🌟 <b>Слово дня:</b>\n"
-        f"🇮🇩 <b>{row['indonesian']}</b>{pos}\n"
-        f"🇷🇺 {row['russian']}"
+        f"{settings.target_flag} <b>{row['indonesian']}</b>{pos}\n"
+        f"{settings.native_flag} {row['russian']}"
     )
 
 
-async def send_reminders(*, bot: Bot, db: Database, now: datetime | None = None) -> int:
+async def send_reminders(*, bot: Bot, db: Database, settings: Settings | None = None, now: datetime | None = None) -> int:
     """
     Send reminders to users whose reminder_time matches current HH:MM.
 
@@ -44,10 +44,14 @@ async def send_reminders(*, bot: Bot, db: Database, now: datetime | None = None)
     if not recipients:
         return 0
 
-    word_of_the_day = await _get_word_of_the_day(db)
+    if settings is None:
+        settings = Settings()
 
+    word_of_the_day = await _get_word_of_the_day(db, settings)
+
+    lang_name = settings.target_language_native
     reminder_text = (
-        "⏰ Мягкое напоминание: давай 5–10 минут на индонезийский?\n\n"
+        f"⏰ Мягкое напоминание: давай 5-10 минут на {lang_name}?\n\n"
         "Команды:\n"
         "• /cards — карточки\n"
         "• /lesson — уроки\n"

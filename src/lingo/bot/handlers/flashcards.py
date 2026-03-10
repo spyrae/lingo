@@ -12,6 +12,7 @@ from lingo.bot.keyboards.inline import (
     get_flashcard_rate_keyboard,
     get_flashcard_show_keyboard,
 )
+from lingo.config import Settings
 from lingo.gamification.achievement_manager import AchievementManager, format_achievement_unlocked
 from lingo.gamification.level_manager import check_level_up, format_level_up
 from lingo.memory.categories import WORD_CATEGORIES
@@ -45,7 +46,7 @@ async def _get_internal_user_id(db: Database, telegram_id: int) -> int | None:
 
 @router.message(Command("cards"))
 @router.message(F.text == "📚 Карточки")
-async def start_cards(message: Message, db: Database) -> None:
+async def start_cards(message: Message, db: Database, settings: Settings) -> None:
     if message.from_user is None:
         return
 
@@ -59,7 +60,7 @@ async def start_cards(message: Message, db: Database) -> None:
 
     due = await UserWordsRepository(db).get_due_cards(internal_user_id, limit=1)
     if due:
-        await send_card(message, db=db, internal_user_id=internal_user_id, word_id=due[0].word_id)
+        await send_card(message, db=db, internal_user_id=internal_user_id, word_id=due[0].word_id, settings=settings)
         return
 
     await message.answer(
@@ -69,7 +70,7 @@ async def start_cards(message: Message, db: Database) -> None:
 
 
 @router.callback_query(F.data.startswith("cards:new:"))
-async def cards_new(callback: CallbackQuery, db: Database) -> None:
+async def cards_new(callback: CallbackQuery, db: Database, settings: Settings) -> None:
     if callback.from_user is None or callback.message is None:
         return
 
@@ -93,7 +94,7 @@ async def cards_new(callback: CallbackQuery, db: Database) -> None:
         return
 
     await UserWordsRepository(db).ensure_user_word(internal_user_id, word_id)
-    await send_card(callback.message, db=db, internal_user_id=internal_user_id, word_id=word_id, is_new=True)
+    await send_card(callback.message, db=db, internal_user_id=internal_user_id, word_id=word_id, is_new=True, settings=settings)
     await callback.answer()
 
 
@@ -104,21 +105,23 @@ async def send_card(
     internal_user_id: int,
     word_id: int,
     is_new: bool = False,
+    settings: Settings | None = None,
 ) -> None:
     word = await VocabularyRepository(db).get_word_by_id(word_id)
     if word is None:
         await message.answer("Карточка не найдена.")
         return
 
+    flag = settings.target_flag if settings else ""
     header = "🆕 <b>Новое слово</b>" if is_new else "📝 <b>Карточка</b>"
     await message.answer(
-        f"{header}\n\n🇮🇩 <b>{word.indonesian}</b>\n\nЧто означает это слово?",
+        f"{header}\n\n{flag} <b>{word.indonesian}</b>\n\nЧто означает это слово?",
         reply_markup=get_flashcard_show_keyboard(word_id),
     )
 
 
 @router.callback_query(F.data.startswith("card:show:"))
-async def card_show(callback: CallbackQuery, db: Database) -> None:
+async def card_show(callback: CallbackQuery, db: Database, settings: Settings) -> None:
     if callback.message is None:
         return
 
@@ -135,8 +138,8 @@ async def card_show(callback: CallbackQuery, db: Database) -> None:
     cat_label = f"{category_info['icon']} {category_info['name']}" if category_info else word.category
 
     await callback.message.edit_text(
-        f"🇮🇩 <b>{word.indonesian}</b>\n"
-        f"🇷🇺 <b>{word.russian}</b>"
+        f"{settings.target_flag} <b>{word.indonesian}</b>\n"
+        f"{settings.native_flag} <b>{word.russian}</b>"
         f"{pos}"
         f"{examples}"
         f"{notes}\n\n"
@@ -148,7 +151,7 @@ async def card_show(callback: CallbackQuery, db: Database) -> None:
 
 
 @router.callback_query(F.data.startswith("card:rate:"))
-async def card_rate(callback: CallbackQuery, db: Database) -> None:
+async def card_rate(callback: CallbackQuery, db: Database, settings: Settings) -> None:
     if callback.from_user is None or callback.message is None:
         return
 
@@ -178,7 +181,7 @@ async def card_rate(callback: CallbackQuery, db: Database) -> None:
     # Next: prefer due cards; otherwise offer new category selection.
     due = await UserWordsRepository(db).get_due_cards(internal_user_id, limit=1)
     if due:
-        await send_card(callback.message, db=db, internal_user_id=internal_user_id, word_id=due[0].word_id)
+        await send_card(callback.message, db=db, internal_user_id=internal_user_id, word_id=due[0].word_id, settings=settings)
         await callback.answer(f"+{result.xp_earned} XP" if result.xp_earned else "Записал")
         return
 
@@ -191,7 +194,7 @@ async def card_rate(callback: CallbackQuery, db: Database) -> None:
 
 
 @router.callback_query(F.data == "card:next")
-async def card_next(callback: CallbackQuery, db: Database) -> None:
+async def card_next(callback: CallbackQuery, db: Database, settings: Settings) -> None:
     if callback.from_user is None or callback.message is None:
         return
 
@@ -203,7 +206,7 @@ async def card_next(callback: CallbackQuery, db: Database) -> None:
 
     due = await UserWordsRepository(db).get_due_cards(internal_user_id, limit=1)
     if due:
-        await send_card(callback.message, db=db, internal_user_id=internal_user_id, word_id=due[0].word_id)
+        await send_card(callback.message, db=db, internal_user_id=internal_user_id, word_id=due[0].word_id, settings=settings)
         await callback.answer()
         return
 

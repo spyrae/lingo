@@ -10,6 +10,11 @@ services:
       OPENAI_API_KEY: ${OPENAI_API_KEY}
       OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4.1-nano}
       OPENAI_TIMEOUT_SECONDS: ${OPENAI_TIMEOUT_SECONDS:-60}
+      TARGET_LANGUAGE: ${TARGET_LANGUAGE:-Indonesian}
+      TARGET_LANGUAGE_NATIVE: ${TARGET_LANGUAGE_NATIVE:-индонезийский}
+      TARGET_FLAG: ${TARGET_FLAG:-🇮🇩}
+      NATIVE_FLAG: ${NATIVE_FLAG:-🇷🇺}
+      WELCOME_PHRASE: ${WELCOME_PHRASE:-Selamat datang!}
     volumes:
       - ./data:/app/data
 

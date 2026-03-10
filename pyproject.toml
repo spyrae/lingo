@@ -1,7 +1,7 @@
 [project]
 name = "lingo"
 version = "0.1.0"
-description = "Indonesian language tutor Telegram bot"
+description = "Language learning Telegram bot with SRS flashcards, AI practice, and gamification"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [

@@ -14,6 +14,7 @@ from aiogram import F, Router
 from aiogram.filters import Command
 from aiogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, Message
 
+from lingo.config import Settings
 from lingo.gamification.achievement_manager import AchievementManager, format_achievement_unlocked
 from lingo.gamification.level_manager import check_level_up, format_level_up
 from lingo.memory.database import Database
@@ -29,9 +30,8 @@ async def _get_internal_user_id(db: Database, telegram_id: int) -> int | None:
     return user.id if user else None
 
 
-async def _pick_quiz(db: Database) -> dict | None:
+async def _pick_quiz(db: Database, settings: Settings) -> dict | None:
     """Pick a random quiz question from vocabulary."""
-    # Pick a target word
     target = await db.fetchone(
         "SELECT id, indonesian, russian, category FROM vocabulary ORDER BY RANDOM() LIMIT 1"
     )
@@ -41,7 +41,6 @@ async def _pick_quiz(db: Database) -> dict | None:
     quiz_type = random.choice(["translate_to_ru", "translate_to_id"])
 
     if quiz_type == "translate_to_ru":
-        # Show Indonesian → pick Russian
         wrong_rows = await db.fetchall(
             """
             SELECT russian FROM vocabulary
@@ -54,14 +53,13 @@ async def _pick_quiz(db: Database) -> dict | None:
         random.shuffle(options)
         correct_idx = options.index(target["russian"])
         return {
-            "question": f"🇮🇩 <b>{target['indonesian']}</b>\n\nКак переводится?",
+            "question": f"{settings.target_flag} <b>{target['indonesian']}</b>\n\nКак переводится?",
             "options": options,
             "correct_idx": correct_idx,
             "word_id": target["id"],
             "xp": 15,
         }
     else:
-        # Show Russian → pick Indonesian
         wrong_rows = await db.fetchall(
             """
             SELECT indonesian FROM vocabulary
@@ -74,7 +72,7 @@ async def _pick_quiz(db: Database) -> dict | None:
         random.shuffle(options)
         correct_idx = options.index(target["indonesian"])
         return {
-            "question": f"🇷🇺 <b>{target['russian']}</b>\n\nКак будет на индонезийском?",
+            "question": f"{settings.native_flag} <b>{target['russian']}</b>\n\nКак будет на {settings.target_language_native}?",
             "options": options,
             "correct_idx": correct_idx,
             "word_id": target["id"],
@@ -98,7 +96,7 @@ _quiz_counter = 0
 
 @router.message(Command("quiz"))
 @router.message(F.text == "🧩 Квиз")
-async def start_quiz(message: Message, db: Database) -> None:
+async def start_quiz(message: Message, db: Database, settings: Settings) -> None:
     if message.from_user is None:
         return
 
@@ -107,7 +105,7 @@ async def start_quiz(message: Message, db: Database) -> None:
         await message.answer("Сначала нажми /start и пройди онбординг.")
         return
 
-    quiz = await _pick_quiz(db)
+    quiz = await _pick_quiz(db, settings)
     if quiz is None:
         await message.answer("Словарь пуст. Сначала загрузи слова.")
         return
@@ -172,11 +170,11 @@ async def quiz_answer(callback: CallbackQuery, db: Database) -> None:
 
 
 @router.callback_query(F.data == "quiz:next")
-async def quiz_next(callback: CallbackQuery, db: Database) -> None:
+async def quiz_next(callback: CallbackQuery, db: Database, settings: Settings) -> None:
     if callback.message is None:
         return
 
-    quiz = await _pick_quiz(db)
+    quiz = await _pick_quiz(db, settings)
     if quiz is None:
         await callback.message.edit_text("Словарь пуст.")
         await callback.answer()

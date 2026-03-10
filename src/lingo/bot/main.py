@@ -72,7 +72,7 @@ def create_auth_middleware(settings: Settings) -> MiddlewareType:
     return auth_middleware
 
 
-async def _start_reminder_scheduler(bot: Bot, db: Database) -> Any:
+async def _start_reminder_scheduler(bot: Bot, db: Database, settings: Settings) -> Any:
     """Start APScheduler to fire reminders every minute."""
     try:
         from apscheduler.schedulers.asyncio import AsyncIOScheduler
@@ -87,7 +87,7 @@ async def _start_reminder_scheduler(bot: Bot, db: Database) -> Any:
     scheduler.add_job(
         send_reminders,
         CronTrigger(minute="*"),
-        kwargs={"bot": bot, "db": db},
+        kwargs={"bot": bot, "db": db, "settings": settings},
         id="daily_reminders",
         replace_existing=True,
     )
@@ -110,8 +110,8 @@ async def run_bot(settings: Settings) -> None:
     scheduler = None
     try:
         await db.connect()
-        dp.update.middleware(DbMiddleware(db))
-        scheduler = await _start_reminder_scheduler(bot, db)
+        dp.update.middleware(DbMiddleware(db, settings))
+        scheduler = await _start_reminder_scheduler(bot, db, settings)
         await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
     finally:
         if scheduler is not None:
