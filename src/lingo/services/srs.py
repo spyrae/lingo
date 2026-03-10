@@ -33,9 +33,19 @@ class ReviewResult:
     new_interval_days: int
     new_repetitions: int
     next_review: date
+    xp_earned: int
 
 
 class SRSEngine:
+    XP_REWARDS: dict[Quality, int] = {
+        Quality.BLACKOUT: 0,
+        Quality.INCORRECT: 1,
+        Quality.INCORRECT_EASY: 2,
+        Quality.CORRECT_HARD: 5,
+        Quality.CORRECT: 8,
+        Quality.PERFECT: 10,
+    }
+
     def calculate_review(self, card: SRSCard, quality: Quality) -> ReviewResult:
         q = int(quality)
         if q < 0 or q > 5:
@@ -64,6 +74,7 @@ class SRSEngine:
             new_interval_days=new_interval,
             new_repetitions=new_reps,
             next_review=next_review,
+            xp_earned=int(self.XP_REWARDS.get(quality, 0)),
         )
 
     def get_card_status(self, ease_factor: float, repetitions: int) -> str:

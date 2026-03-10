@@ -70,3 +70,52 @@ class UserRepository:
         )
         await self._db.commit()
 
+    async def add_xp(self, telegram_id: int, xp: int) -> None:
+        if xp <= 0:
+            return
+        await self._db.execute(
+            "UPDATE users SET total_xp = total_xp + ?, updated_at = CURRENT_TIMESTAMP WHERE telegram_id = ?",
+            (xp, telegram_id),
+        )
+        await self._db.commit()
+
+    async def update_activity(self, telegram_id: int) -> None:
+        """
+        Update last_activity_date and streak counters.
+
+        Rules:
+        - first activity ever -> streak=1
+        - activity same day -> no change
+        - activity next day -> streak++
+        - otherwise -> streak=1
+        """
+        user = await self.get_by_telegram_id(telegram_id)
+        if user is None:
+            return
+
+        today = date.today()
+        last = date.fromisoformat(user.last_activity_date) if user.last_activity_date else None
+
+        if last == today:
+            return
+
+        if last is None:
+            new_streak = 1
+        else:
+            diff = (today - last).days
+            new_streak = user.current_streak + 1 if diff == 1 else 1
+
+        longest = max(user.longest_streak, new_streak)
+        await self._db.execute(
+            """
+            UPDATE users SET
+              current_streak = ?,
+              longest_streak = ?,
+              last_activity_date = ?,
+              updated_at = CURRENT_TIMESTAMP
+            WHERE telegram_id = ?
+            """,
+            (new_streak, longest, today.isoformat(), telegram_id),
+        )
+        await self._db.commit()
+

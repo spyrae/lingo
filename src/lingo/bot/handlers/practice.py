@@ -63,13 +63,15 @@ async def start_practice(message: Message, state: FSMContext, db: Database) -> N
     if message.from_user is None:
         return
 
-    user = await UserRepository(db).get_by_telegram_id(message.from_user.id)
+    repo = UserRepository(db)
+    await repo.update_activity(message.from_user.id)
+    user = await repo.get_by_telegram_id(message.from_user.id)
     if user is None:
         await message.answer("Сначала нажми /start и пройди онбординг.")
         return
 
     await state.set_state(PracticeStates.chatting)
-    await state.update_data(history=[], level=user.level)
+    await state.update_data(history=[], level=user.level, practice_messages=0)
 
     await message.answer(
         "💬 Практика началась.\n\n"
@@ -114,4 +116,9 @@ async def practice_chat(message: Message, state: FSMContext, db: Database) -> No
     history.append({"role": "assistant", "content": reply})
     await state.update_data(history=history)
     await message.answer(reply)
+
+    # XP: простая мотивация — 5 XP за каждое сообщение пользователя в практике
+    practice_messages = int(data.get("practice_messages", 0)) + 1
+    await state.update_data(practice_messages=practice_messages)
+    await UserRepository(db).add_xp(message.from_user.id, 5)
 

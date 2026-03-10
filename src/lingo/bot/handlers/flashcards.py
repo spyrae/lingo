@@ -46,6 +46,9 @@ async def start_cards(message: Message, db: Database) -> None:
     if message.from_user is None:
         return
 
+    user_repo = UserRepository(db)
+    await user_repo.update_activity(message.from_user.id)
+
     internal_user_id = await _get_internal_user_id(db, message.from_user.id)
     if internal_user_id is None:
         await message.answer("Сначала нажми /start и пройди онбординг.")
@@ -151,13 +154,14 @@ async def card_rate(callback: CallbackQuery, db: Database) -> None:
         await callback.answer()
         return
 
-    await UserWordsRepository(db).record_review(internal_user_id, word_id, quality)
+    result = await UserWordsRepository(db).record_review(internal_user_id, word_id, quality)
+    await UserRepository(db).add_xp(callback.from_user.id, result.xp_earned)
 
     # Next: prefer due cards; otherwise offer new category selection.
     due = await UserWordsRepository(db).get_due_cards(internal_user_id, limit=1)
     if due:
         await send_card(callback.message, db=db, internal_user_id=internal_user_id, word_id=due[0].word_id)
-        await callback.answer("Записал")
+        await callback.answer(f"+{result.xp_earned} XP" if result.xp_earned else "Записал")
         return
 
     today = date.today().isoformat()
@@ -165,7 +169,7 @@ async def card_rate(callback: CallbackQuery, db: Database) -> None:
         f"✅ На сегодня всё! ({today})\n\nХочешь выучить ещё новое слово?",
         reply_markup=get_category_keyboard(),
     )
-    await callback.answer("Записал")
+    await callback.answer(f"+{result.xp_earned} XP" if result.xp_earned else "Записал")
 
 
 @router.callback_query(F.data == "card:next")

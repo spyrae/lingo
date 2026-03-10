@@ -55,6 +55,9 @@ async def lessons_list(message: Message, db: Database, state: FSMContext) -> Non
     if message.from_user is None:
         return
 
+    user_repo = UserRepository(db)
+    await user_repo.update_activity(message.from_user.id)
+
     internal_user_id = await _get_internal_user_id(db, message.from_user.id)
     if internal_user_id is None:
         await message.answer("Сначала нажми /start и пройди онбординг.")
@@ -97,6 +100,7 @@ async def lesson_open(callback: CallbackQuery, db: Database, state: FSMContext) 
     if callback.from_user is None or callback.message is None:
         return
 
+    await UserRepository(db).update_activity(callback.from_user.id)
     internal_user_id = await _get_internal_user_id(db, callback.from_user.id)
     if internal_user_id is None:
         await callback.message.answer("Сначала нажми /start и пройди онбординг.")
@@ -281,6 +285,8 @@ async def lesson_text_answer(message: Message, db: Database, state: FSMContext) 
             score = round((correct / total) * 100) if total else 0
             if score >= 70:
                 await LessonProgressRepository(db).complete_lesson(internal_user_id, lesson_id, score)
+                xp_reward = int(data["lesson"].get("xp_reward", 0))
+                await UserRepository(db).add_xp(message.from_user.id, xp_reward)
 
 
 @router.callback_query(F.data.startswith("lesson:next:"))

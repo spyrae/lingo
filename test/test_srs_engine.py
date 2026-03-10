@@ -12,6 +12,7 @@ def test_new_card_first_review_correct() -> None:
     assert result.new_repetitions == 1
     assert result.new_interval_days == 1
     assert result.next_review == date.today() + timedelta(days=1)
+    assert result.xp_earned == 8
 
 
 def test_second_review_correct() -> None:
@@ -28,6 +29,7 @@ def test_failed_review_resets() -> None:
 
     assert result.new_repetitions == 0
     assert result.new_interval_days == 1
+    assert result.xp_earned == 0
 
 
 def test_ease_factor_minimum() -> None:
