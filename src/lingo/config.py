@@ -1,0 +1,25 @@
+from pydantic import Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        extra="ignore",
+    )
+
+    telegram_bot_token: str = Field(description="Telegram Bot API token")
+    allowed_user_ids: list[int] = Field(
+        default_factory=list,
+        description="List of Telegram user IDs allowed to use the bot",
+    )
+    allow_all_users: bool = Field(
+        default=False,
+        description="Whether to allow access to all users",
+    )
+
+
+def get_settings() -> Settings:
+    return Settings()
+
