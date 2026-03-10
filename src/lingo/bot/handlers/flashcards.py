@@ -13,6 +13,8 @@ from lingo.bot.keyboards.inline import (
     get_flashcard_show_keyboard,
 )
 from lingo.gamification.achievement_manager import AchievementManager, format_achievement_unlocked
+from lingo.gamification.level_manager import check_level_up, format_level_up
+from lingo.memory.categories import WORD_CATEGORIES
 from lingo.memory.database import Database
 from lingo.memory.repositories.user_repository import UserRepository
 from lingo.memory.repositories.user_words_repository import UserWordsRepository
@@ -127,13 +129,18 @@ async def card_show(callback: CallbackQuery, db: Database) -> None:
         return
 
     examples = _render_examples(word.examples_json)
-    notes = f"\n\n📝 {word.notes}" if word.notes else ""
+    notes = f"\n📝 {word.notes}" if word.notes else ""
+    pos = f"\n<i>({word.part_of_speech})</i>" if word.part_of_speech else ""
+    category_info = WORD_CATEGORIES.get(word.category)
+    cat_label = f"{category_info['icon']} {category_info['name']}" if category_info else word.category
 
     await callback.message.edit_text(
         f"🇮🇩 <b>{word.indonesian}</b>\n"
         f"🇷🇺 <b>{word.russian}</b>"
+        f"{pos}"
         f"{examples}"
         f"{notes}\n\n"
+        f"📂 {cat_label}\n\n"
         "Оцени, насколько хорошо ты это знал (0–5):",
         reply_markup=get_flashcard_rate_keyboard(word_id),
     )
@@ -163,6 +170,10 @@ async def card_rate(callback: CallbackQuery, db: Database) -> None:
     )
     for a in unlocked:
         await callback.message.answer(format_achievement_unlocked(a))
+
+    new_level = await check_level_up(db, callback.from_user.id)
+    if new_level:
+        await callback.message.answer(format_level_up(new_level))
 
     # Next: prefer due cards; otherwise offer new category selection.
     due = await UserWordsRepository(db).get_due_cards(internal_user_id, limit=1)

@@ -18,6 +18,7 @@ async def cmd_help(message: Message) -> None:
         "/menu — главное меню\n"
         "/cards — карточки\n"
         "/lesson — уроки\n"
+        "/quiz — мини-тест\n"
         "/practice — практика диалога\n"
         "/stop — остановить практику\n"
         "/stats — прогресс и статистика\n"

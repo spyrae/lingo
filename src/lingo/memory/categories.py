@@ -69,5 +69,47 @@ WORD_CATEGORIES: dict[str, dict[str, object]] = {
         "order": 10,
         "description": "Полезные разговорные выражения",
     },
+    "shopping": {
+        "name": "Покупки",
+        "name_id": "Belanja",
+        "icon": "🛍️",
+        "order": 11,
+        "description": "Магазины, торг, оплата",
+    },
+    "health": {
+        "name": "Здоровье",
+        "name_id": "Kesehatan",
+        "icon": "🏥",
+        "order": 12,
+        "description": "Тело, болезни, аптека",
+    },
+    "nature": {
+        "name": "Природа",
+        "name_id": "Alam",
+        "icon": "🌴",
+        "order": 13,
+        "description": "Природа, животные, погода",
+    },
+    "emotions": {
+        "name": "Эмоции",
+        "name_id": "Emosi",
+        "icon": "😊",
+        "order": 14,
+        "description": "Чувства и эмоции",
+    },
+    "work": {
+        "name": "Работа",
+        "name_id": "Pekerjaan",
+        "icon": "💼",
+        "order": 15,
+        "description": "Профессии и деловая лексика",
+    },
+    "idioms": {
+        "name": "Идиомы",
+        "name_id": "Idiom",
+        "icon": "🧠",
+        "order": 16,
+        "description": "Устойчивые выражения и идиомы",
+    },
 }
 

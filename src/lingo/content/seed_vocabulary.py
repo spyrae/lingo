@@ -14,17 +14,28 @@ logger = logging.getLogger(__name__)
 
 async def seed_vocabulary(*, tsv_path: Path | None = None) -> int:
     settings = Settings()
-    if tsv_path is None:
-        tsv_path = Path(settings.data_dir) / "vocabulary" / "vocab-500.tsv"
+    vocab_dir = Path(settings.data_dir) / "vocabulary"
     db = Database(settings.db_path)
     await db.connect()
     try:
-        loader = VocabularyLoader(tsv_path)
-        words = loader.to_insert_dicts()
         repo = VocabularyRepository(db)
-        inserted = await repo.insert_words(words)
-        logger.info("Seeded %d vocabulary entries from %s", inserted, tsv_path)
-        return inserted
+        total_inserted = 0
+
+        if tsv_path is not None:
+            loader = VocabularyLoader(tsv_path)
+            words = loader.to_insert_dicts()
+            inserted = await repo.insert_words(words)
+            logger.info("Seeded %d vocabulary entries from %s", inserted, tsv_path)
+            return inserted
+
+        for tsv_file in sorted(vocab_dir.glob("*.tsv")):
+            loader = VocabularyLoader(tsv_file)
+            words = loader.to_insert_dicts()
+            inserted = await repo.insert_words(words)
+            logger.info("Seeded %d vocabulary entries from %s", inserted, tsv_file.name)
+            total_inserted += inserted
+
+        return total_inserted
     finally:
         await db.disconnect()
 

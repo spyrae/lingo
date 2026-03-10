@@ -76,6 +76,10 @@ class AchievementManager:
             try_unlock("vocab_50")
         if stats.words_mastered >= 100:
             try_unlock("vocab_100")
+        if stats.words_mastered >= 250:
+            try_unlock("vocab_250")
+        if stats.words_mastered >= 500:
+            try_unlock("vocab_500")
 
         # Streak thresholds
         if stats.longest_streak >= 7:
@@ -90,10 +94,16 @@ class AchievementManager:
             try_unlock("lesson_first")
         if stats.lessons_completed >= 5:
             try_unlock("lesson_5")
+        if stats.lessons_completed >= 10:
+            try_unlock("lesson_10")
+        if stats.lessons_completed >= 20:
+            try_unlock("lesson_20")
 
-        # Event-driven (practice)
+        # Event-driven
         if event == "practice_started":
             try_unlock("practice_first")
+        if event == "quiz_completed":
+            try_unlock("quiz_first")
 
         # Persist + XP rewards
         result: list[AchievementDefinition] = []

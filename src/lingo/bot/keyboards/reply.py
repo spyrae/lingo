@@ -9,7 +9,10 @@ def get_main_menu_keyboard() -> ReplyKeyboardMarkup:
                 KeyboardButton(text="📖 Уроки"),
             ],
             [
+                KeyboardButton(text="🧩 Квиз"),
                 KeyboardButton(text="💬 Практика"),
+            ],
+            [
                 KeyboardButton(text="📊 Прогресс"),
             ],
         ],

@@ -14,13 +14,19 @@ from lingo.memory.repositories.reminders_repository import RemindersRepository
 logger = logging.getLogger(__name__)
 
 
-REMINDER_TEXT = (
-    "⏰ Мягкое напоминание: давай 5–10 минут на индонезийский?\n\n"
-    "Команды:\n"
-    "• /cards — карточки\n"
-    "• /lesson — уроки\n"
-    "• /practice — практика диалога\n"
-)
+async def _get_word_of_the_day(db: Database) -> str:
+    """Pick a random word from vocabulary and format it as Word of the Day."""
+    row = await db.fetchone(
+        "SELECT indonesian, russian, part_of_speech, category FROM vocabulary ORDER BY RANDOM() LIMIT 1"
+    )
+    if not row:
+        return ""
+    pos = f" ({row['part_of_speech']})" if row.get("part_of_speech") else ""
+    return (
+        f"\n\n🌟 <b>Слово дня:</b>\n"
+        f"🇮🇩 <b>{row['indonesian']}</b>{pos}\n"
+        f"🇷🇺 {row['russian']}"
+    )
 
 
 async def send_reminders(*, bot: Bot, db: Database, now: datetime | None = None) -> int:
@@ -38,10 +44,21 @@ async def send_reminders(*, bot: Bot, db: Database, now: datetime | None = None)
     if not recipients:
         return 0
 
+    word_of_the_day = await _get_word_of_the_day(db)
+
+    reminder_text = (
+        "⏰ Мягкое напоминание: давай 5–10 минут на индонезийский?\n\n"
+        "Команды:\n"
+        "• /cards — карточки\n"
+        "• /lesson — уроки\n"
+        "• /practice — практика диалога"
+        f"{word_of_the_day}"
+    )
+
     sent = 0
     for r in recipients:
         try:
-            await bot.send_message(chat_id=r.telegram_id, text=REMINDER_TEXT)
+            await bot.send_message(chat_id=r.telegram_id, text=reminder_text, parse_mode="HTML")
             await repo.mark_sent(user_id=r.user_id, today_iso=today_iso, hhmm=hhmm)
             sent += 1
         except Exception:

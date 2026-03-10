@@ -24,7 +24,7 @@ def create_bot(settings: Settings) -> Bot:
 
 
 def create_dispatcher(storage: SQLiteStorage) -> Dispatcher:
-    from lingo.bot.handlers import commands, flashcards, lessons, onboarding, practice, reminders, stats
+    from lingo.bot.handlers import commands, flashcards, lessons, onboarding, practice, quiz, reminders, stats
 
     dp = Dispatcher(storage=storage)
     dp.include_router(onboarding.router)
@@ -32,6 +32,7 @@ def create_dispatcher(storage: SQLiteStorage) -> Dispatcher:
     dp.include_router(flashcards.router)
     dp.include_router(lessons.router)
     dp.include_router(practice.router)
+    dp.include_router(quiz.router)
     dp.include_router(stats.router)
     dp.include_router(reminders.router)
     return dp

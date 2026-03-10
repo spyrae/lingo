@@ -4,18 +4,11 @@ from aiogram import F, Router
 from aiogram.filters import Command
 from aiogram.types import Message
 
+from lingo.gamification.level_manager import LEVEL_NAMES, LEVEL_THRESHOLDS
 from lingo.memory.database import Database
 from lingo.memory.repositories.user_repository import UserRepository
 
 router = Router(name="stats")
-
-
-LEVEL_NAMES: dict[str, str] = {
-    "zero": "🌱 Pemula (Ноль)",
-    "beginner": "📚 Pemula (Начинающий)",
-    "elementary": "📖 Dasar (Элементарный)",
-    "intermediate": "💪 Menengah (Средний)",
-}
 
 
 async def _build_stats_text(db: Database, telegram_id: int) -> str | None:
@@ -59,10 +52,21 @@ async def _build_stats_text(db: Database, telegram_id: int) -> str | None:
 
     level_label = LEVEL_NAMES.get(user.level, user.level)
 
+    # Calculate progress to next level
+    next_level_info = ""
+    current_idx = next(
+        (i for i, (name, _) in enumerate(LEVEL_THRESHOLDS) if name == user.level), 0
+    )
+    if current_idx + 1 < len(LEVEL_THRESHOLDS):
+        next_name, next_xp = LEVEL_THRESHOLDS[current_idx + 1]
+        remaining = next_xp - user.total_xp
+        next_label = LEVEL_NAMES.get(next_name, next_name)
+        next_level_info = f"\n📈 До {next_label}: <b>{remaining}</b> XP"
+
     lines = [
         "📊 <b>Твой прогресс</b>\n",
         f"Уровень: {level_label}",
-        f"XP: <b>{user.total_xp}</b>",
+        f"XP: <b>{user.total_xp}</b>{next_level_info}",
         f"Streak: <b>{user.current_streak}</b> дн. (макс: {user.longest_streak})",
         "",
         "📚 <b>Слова</b>",

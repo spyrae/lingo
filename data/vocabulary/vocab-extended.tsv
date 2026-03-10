@@ -1,0 +1,374 @@
+indonesian	russian	category	difficulty	part_of_speech	english_gloss
+Berapa harganya?	Сколько стоит?	shopping	1	phrase	How much is it?
+Bisa kurang?	Можно дешевле?	shopping	1	phrase	Can you lower the price?
+Terlalu mahal	Слишком дорого	shopping	1	phrase	Too expensive
+murah	дешёвый	shopping	1	adj	cheap
+mahal	дорогой	shopping	1	adj	expensive
+uang	деньги	shopping	1	noun	money
+harga	цена	shopping	1	noun	price
+diskon	скидка	shopping	1	noun	discount
+bayar	платить	shopping	1	verb	to pay
+beli	купить	shopping	1	verb	to buy
+jual	продать	shopping	1	verb	to sell
+toko	магазин	shopping	1	noun	shop
+pasar	рынок	shopping	1	noun	market
+kasir	касса	shopping	1	noun	cashier
+kembalian	сдача	shopping	2	noun	change (money)
+struk	чек	shopping	2	noun	receipt
+gratis	бесплатно	shopping	1	adj	free
+ukuran	размер	shopping	2	noun	size
+warna	цвет	shopping	1	noun	color
+coba	примерить	shopping	1	verb	to try
+kartu kredit	кредитная карта	shopping	2	noun	credit card
+tunai	наличные	shopping	2	noun	cash
+dompet	кошелёк	shopping	1	noun	wallet
+tas	сумка	shopping	1	noun	bag
+oleh-oleh	сувениры	shopping	2	noun	souvenirs
+dokter	врач	health	1	noun	doctor
+rumah sakit	больница	health	1	noun	hospital
+apotek	аптека	health	1	noun	pharmacy
+obat	лекарство	health	1	noun	medicine
+sakit	больной	health	1	adj	sick
+sehat	здоровый	health	1	adj	healthy
+kepala	голова	health	1	noun	head
+perut	живот	health	1	noun	stomach
+demam	температура	health	1	noun	fever
+batuk	кашель	health	1	noun	cough
+pilek	насморк	health	1	noun	cold
+alergi	аллергия	health	2	noun	allergy
+resep	рецепт	health	2	noun	prescription
+gigi	зуб	health	1	noun	tooth
+mata	глаз	health	1	noun	eye
+telinga	ухо	health	1	noun	ear
+hidung	нос	health	1	noun	nose
+mulut	рот	health	1	noun	mouth
+tangan	рука	health	1	noun	hand
+kaki	нога	health	1	noun	leg/foot
+punggung	спина	health	2	noun	back
+dada	грудь	health	2	noun	chest
+Saya sakit	Я болен	health	1	phrase	I am sick
+Saya perlu dokter	Мне нужен врач	health	1	phrase	I need a doctor
+Dimana apotek?	Где аптека?	health	1	phrase	Where is the pharmacy?
+sakit kepala	головная боль	health	1	phrase	headache
+sakit perut	боль в животе	health	1	phrase	stomachache
+pohon	дерево	nature	1	noun	tree
+bunga	цветок	nature	1	noun	flower
+gunung	гора	nature	1	noun	mountain
+laut	море	nature	1	noun	sea
+pantai	пляж	nature	1	noun	beach
+sungai	река	nature	1	noun	river
+danau	озеро	nature	2	noun	lake
+hutan	лес	nature	1	noun	forest
+sawah	рисовое поле	nature	2	noun	rice field
+matahari	солнце	nature	1	noun	sun
+bulan	луна	nature	1	noun	moon
+bintang	звезда	nature	1	noun	star
+hujan	дождь	nature	1	noun	rain
+panas	жарко	nature	1	adj	hot
+dingin	холодно	nature	1	adj	cold
+angin	ветер	nature	1	noun	wind
+awan	облако	nature	2	noun	cloud
+pelangi	радуга	nature	2	noun	rainbow
+kucing	кошка	nature	1	noun	cat
+anjing	собака	nature	1	noun	dog
+burung	птица	nature	1	noun	bird
+ikan	рыба	nature	1	noun	fish
+monyet	обезьяна	nature	1	noun	monkey
+gajah	слон	nature	2	noun	elephant
+harimau	тигр	nature	2	noun	tiger
+kura-kura	черепаха	nature	2	noun	turtle
+ular	змея	nature	2	noun	snake
+kupu-kupu	бабочка	nature	2	noun	butterfly
+nyamuk	комар	nature	1	noun	mosquito
+semut	муравей	nature	2	noun	ant
+senang	радостный	emotions	1	adj	happy/glad
+sedih	грустный	emotions	1	adj	sad
+marah	злой	emotions	1	adj	angry
+takut	испуганный	emotions	1	adj	afraid
+bosan	скучающий	emotions	1	adj	bored
+kaget	удивлённый	emotions	1	adj	surprised
+malu	стеснительный	emotions	1	adj	shy/embarrassed
+bangga	гордый	emotions	2	adj	proud
+cemas	тревожный	emotions	2	adj	anxious
+iri	завистливый	emotions	2	adj	envious
+kecewa	разочарованный	emotions	2	adj	disappointed
+rindu	скучать (по кому-то)	emotions	1	verb	to miss someone
+sayang	любить/дорогой	emotions	1	adj	love/dear
+khawatir	беспокоиться	emotions	2	verb	to worry
+semangat	энтузиазм	emotions	2	noun	enthusiasm
+Saya senang	Я рад	emotions	1	phrase	I am happy
+Saya sedih	Мне грустно	emotions	1	phrase	I am sad
+Saya rindu kamu	Я скучаю по тебе	emotions	1	phrase	I miss you
+Jangan khawatir	Не волнуйся	emotions	1	phrase	Don't worry
+Saya bangga	Я горжусь	emotions	2	phrase	I am proud
+pekerjaan	работа	work	1	noun	job/work
+kantor	офис	work	1	noun	office
+gaji	зарплата	work	2	noun	salary
+bos	начальник	work	1	noun	boss
+karyawan	сотрудник	work	2	noun	employee
+rapat	совещание	work	2	noun	meeting
+proyek	проект	work	2	noun	project
+bisnis	бизнес	work	1	noun	business
+guru	учитель	work	1	noun	teacher
+dokter	врач	work	1	noun	doctor
+polisi	полицейский	work	1	noun	police
+petani	фермер	work	2	noun	farmer
+nelayan	рыбак	work	2	noun	fisherman
+pedagang	торговец	work	2	noun	merchant
+sopir	водитель	work	1	noun	driver
+perawat	медсестра	work	2	noun	nurse
+insinyur	инженер	work	2	noun	engineer
+pengacara	адвокат	work	2	noun	lawyer
+wawancara	собеседование	work	2	noun	interview
+melamar	подавать заявку	work	2	verb	to apply (for job)
+Apa pekerjaan Anda?	Кем вы работаете?	work	1	phrase	What is your job?
+Saya bekerja di	Я работаю в	work	1	phrase	I work at
+Tidak apa-apa	Ничего страшного	phrases	1	phrase	It's okay
+Permisi	Извините (обращение)	phrases	1	phrase	Excuse me
+Maaf	Извините	phrases	1	phrase	Sorry
+Sama-sama	Пожалуйста (ответ)	phrases	1	phrase	You're welcome
+Tolong	Пожалуйста (просьба)	phrases	1	phrase	Please (request)
+Saya tidak mengerti	Я не понимаю	phrases	1	phrase	I don't understand
+Bisa bicara pelan?	Можно помедленнее?	phrases	1	phrase	Can you speak slowly?
+Apa artinya?	Что это значит?	phrases	1	phrase	What does it mean?
+Saya belajar bahasa Indonesia	Я учу индонезийский	phrases	1	phrase	I'm learning Indonesian
+Dimana toilet?	Где туалет?	phrases	1	phrase	Where is the toilet?
+Mau ke mana?	Куда едешь?	phrases	1	phrase	Where are you going?
+Dari mana?	Откуда?	phrases	1	phrase	Where from?
+Sudah makan?	Уже ели?	phrases	1	phrase	Have you eaten?
+Belum	Ещё нет	phrases	1	phrase	Not yet
+Sudah	Уже	phrases	1	phrase	Already
+Boleh saya duduk di sini?	Можно я тут сяду?	phrases	1	phrase	May I sit here?
+Saya mau pesan	Я хочу заказать	phrases	1	phrase	I want to order
+Enak sekali!	Очень вкусно!	phrases	1	phrase	Very delicious!
+Ayo!	Пошли!/Давай!	phrases	1	phrase	Let's go!
+Sampai jumpa	До свидания	phrases	1	phrase	See you
+Selamat jalan	Счастливого пути	phrases	1	phrase	Have a safe trip
+Hati-hati	Осторожно	phrases	1	phrase	Be careful
+Bagus sekali	Очень хорошо	phrases	1	phrase	Very good
+Saya setuju	Я согласен	phrases	2	phrase	I agree
+Tentu saja	Конечно	phrases	1	phrase	Of course
+Mungkin	Может быть	phrases	1	phrase	Maybe
+Saya pikir	Я думаю	phrases	2	phrase	I think
+Betul	Правильно	phrases	1	phrase	Correct/Right
+Salah	Неправильно	phrases	1	phrase	Wrong
+Sebentar	Подождите минутку	phrases	1	phrase	Wait a moment
+Cepat	Быстро	phrases	1	phrase	Fast/Quick
+Pelan-pelan	Медленно	phrases	1	phrase	Slowly
+Di sebelah kiri	Слева	phrases	1	phrase	On the left
+Di sebelah kanan	Справа	phrases	1	phrase	On the right
+Lurus	Прямо	phrases	1	phrase	Straight
+Dekat	Близко	phrases	1	phrase	Near
+Jauh	Далеко	phrases	1	phrase	Far
+Nama saya...	Меня зовут...	phrases	1	phrase	My name is...
+Senang berkenalan	Приятно познакомиться	phrases	1	phrase	Nice to meet you
+Saya dari Rusia	Я из России	phrases	1	phrase	I am from Russia
+Berapa umur Anda?	Сколько вам лет?	phrases	1	phrase	How old are you?
+Saya suka Indonesia	Мне нравится Индонезия	phrases	1	phrase	I like Indonesia
+Cuaca bagus hari ini	Сегодня хорошая погода	phrases	2	phrase	Nice weather today
+Bisa tolong foto?	Можете сфотографировать?	phrases	1	phrase	Can you take a photo?
+Saya tersesat	Я заблудился	phrases	1	phrase	I am lost
+nasi goreng	жареный рис	food	1	noun	fried rice
+mie goreng	жареная лапша	food	1	noun	fried noodles
+sate	сатей (шашлычки)	food	1	noun	satay
+rendang	ренданг (тушёное мясо)	food	2	noun	rendang
+gado-gado	гадо-гадо (овощной салат)	food	2	noun	gado-gado
+bakso	фрикадельковый суп	food	1	noun	meatball soup
+soto	сото (суп с куркумой)	food	2	noun	turmeric soup
+tempe	темпе (соевый продукт)	food	2	noun	tempeh
+tahu	тофу	food	1	noun	tofu
+sambal	самбал (острый соус)	food	1	noun	chili sauce
+nasi	рис	food	1	noun	rice (cooked)
+ayam	курица	food	1	noun	chicken
+ikan	рыба	food	1	noun	fish
+daging	мясо	food	1	noun	meat
+sayur	овощи	food	1	noun	vegetables
+buah	фрукты	food	1	noun	fruit
+kopi	кофе	food	1	noun	coffee
+teh	чай	food	1	noun	tea
+es	лёд	food	1	noun	ice
+susu	молоко	food	1	noun	milk
+pedas	острый	food	1	adj	spicy
+manis	сладкий	food	1	adj	sweet
+asin	солёный	food	1	adj	salty
+asam	кислый	food	2	adj	sour
+pahit	горький	food	2	adj	bitter
+sendok	ложка	food	1	noun	spoon
+garpu	вилка	food	1	noun	fork
+piring	тарелка	food	1	noun	plate
+gelas	стакан	food	1	noun	glass
+pisang	банан	food	1	noun	banana
+mangga	манго	food	1	noun	mango
+kelapa	кокос	food	1	noun	coconut
+durian	дуриан	food	2	noun	durian
+jeruk	апельсин	food	1	noun	orange
+semangka	арбуз	food	1	noun	watermelon
+masuk	входить	verbs	1	verb	to enter
+keluar	выходить	verbs	1	verb	to exit
+duduk	сидеть	verbs	1	verb	to sit
+berdiri	стоять	verbs	1	verb	to stand
+tidur	спать	verbs	1	verb	to sleep
+bangun	просыпаться	verbs	1	verb	to wake up
+mandi	мыться	verbs	1	verb	to bathe
+pakai	носить (одежду)	verbs	1	verb	to wear
+bawa	нести	verbs	1	verb	to carry/bring
+ambil	брать	verbs	1	verb	to take
+kasih	давать	verbs	1	verb	to give
+buka	открывать	verbs	1	verb	to open
+tutup	закрывать	verbs	1	verb	to close
+tunggu	ждать	verbs	1	verb	to wait
+cari	искать	verbs	1	verb	to search
+ketemu	встретить	verbs	1	verb	to meet/find
+dengar	слышать	verbs	1	verb	to hear
+lihat	видеть	verbs	1	verb	to see
+rasa	чувствовать	verbs	1	verb	to feel
+pikir	думать	verbs	1	verb	to think
+tahu	знать	verbs	1	verb	to know
+lupa	забыть	verbs	1	verb	to forget
+ingat	помнить	verbs	1	verb	to remember
+mulai	начинать	verbs	1	verb	to start
+selesai	заканчивать	verbs	1	verb	to finish
+kirim	отправить	verbs	2	verb	to send
+terima	получить	verbs	2	verb	to receive
+bayar	платить	verbs	1	verb	to pay
+pesan	заказать	verbs	1	verb	to order
+bantu	помочь	verbs	1	verb	to help
+coba	попробовать	verbs	1	verb	to try
+ganti	менять	verbs	2	verb	to change
+pinjam	одолжить	verbs	2	verb	to borrow
+kembali	вернуться	verbs	1	verb	to return
+besar	большой	adjectives	1	adj	big
+kecil	маленький	adjectives	1	adj	small
+tinggi	высокий	adjectives	1	adj	tall/high
+rendah	низкий	adjectives	1	adj	low/short
+baru	новый	adjectives	1	adj	new
+lama	старый (о вещах)	adjectives	1	adj	old (things)
+tua	старый (о людях)	adjectives	1	adj	old (people)
+muda	молодой	adjectives	1	adj	young
+cantik	красивая	adjectives	1	adj	beautiful (woman)
+ganteng	красивый (мужчина)	adjectives	1	adj	handsome
+jelek	некрасивый	adjectives	2	adj	ugly
+bersih	чистый	adjectives	1	adj	clean
+kotor	грязный	adjectives	1	adj	dirty
+ramai	шумный/людный	adjectives	2	adj	crowded/busy
+sepi	тихий/безлюдный	adjectives	2	adj	quiet/deserted
+terang	светлый	adjectives	2	adj	bright
+gelap	тёмный	adjectives	2	adj	dark
+kuat	сильный	adjectives	1	adj	strong
+lemah	слабый	adjectives	2	adj	weak
+cepat	быстрый	adjectives	1	adj	fast
+lambat	медленный	adjectives	1	adj	slow
+mudah	лёгкий	adjectives	1	adj	easy
+sulit	сложный	adjectives	1	adj	difficult
+penting	важный	adjectives	2	adj	important
+gratis	бесплатный	adjectives	1	adj	free
+satu	один	numbers	1	num	one
+dua	два	numbers	1	num	two
+tiga	три	numbers	1	num	three
+empat	четыре	numbers	1	num	four
+lima	пять	numbers	1	num	five
+enam	шесть	numbers	1	num	six
+tujuh	семь	numbers	1	num	seven
+delapan	восемь	numbers	1	num	eight
+sembilan	девять	numbers	1	num	nine
+sepuluh	десять	numbers	1	num	ten
+sebelas	одиннадцать	numbers	1	num	eleven
+dua belas	двенадцать	numbers	1	num	twelve
+dua puluh	двадцать	numbers	1	num	twenty
+lima puluh	пятьдесят	numbers	1	num	fifty
+seratus	сто	numbers	1	num	hundred
+seribu	тысяча	numbers	1	num	thousand
+sejuta	миллион	numbers	2	num	million
+pertama	первый	numbers	1	adj	first
+kedua	второй	numbers	1	adj	second
+ketiga	третий	numbers	1	adj	third
+setengah	половина	numbers	2	num	half
+bandara	аэропорт	transport	1	noun	airport
+stasiun	вокзал	transport	1	noun	station
+halte	остановка	transport	1	noun	bus stop
+tiket	билет	transport	1	noun	ticket
+bis	автобус	transport	1	noun	bus
+kereta	поезд	transport	1	noun	train
+pesawat	самолёт	transport	1	noun	airplane
+kapal	корабль	transport	1	noun	ship
+sepeda	велосипед	transport	1	noun	bicycle
+sepeda motor	мотоцикл	transport	1	noun	motorcycle
+ojek	мото-такси	transport	1	noun	motorcycle taxi
+becak	велорикша	transport	2	noun	rickshaw
+berangkat	отправляться	transport	1	verb	to depart
+sampai	прибывать	transport	1	verb	to arrive
+naik	садиться (на транспорт)	transport	1	verb	to get on
+turun	выходить (из транспорта)	transport	1	verb	to get off
+belok	поворачивать	transport	1	verb	to turn
+jalan	идти/улица	transport	1	noun	to walk/street
+peta	карта	transport	1	noun	map
+Tolong ke...	Пожалуйста, к...	transport	1	phrase	Please take me to...
+Berapa ke bandara?	Сколько до аэропорта?	transport	1	phrase	How much to the airport?
+senin	понедельник	time	1	noun	Monday
+selasa	вторник	time	1	noun	Tuesday
+rabu	среда	time	1	noun	Wednesday
+kamis	четверг	time	1	noun	Thursday
+jumat	пятница	time	1	noun	Friday
+sabtu	суббота	time	1	noun	Saturday
+minggu	воскресенье	time	1	noun	Sunday
+hari ini	сегодня	time	1	phrase	today
+kemarin	вчера	time	1	noun	yesterday
+besok	завтра	time	1	noun	tomorrow
+lusa	послезавтра	time	2	noun	day after tomorrow
+sekarang	сейчас	time	1	noun	now
+nanti	потом	time	1	noun	later
+dulu	раньше	time	1	noun	before/first
+Jam berapa?	Который час?	time	1	phrase	What time is it?
+Jam tiga	Три часа	time	1	phrase	Three o'clock
+pagi	утро	time	1	noun	morning
+siang	день	time	1	noun	afternoon
+sore	вечер	time	1	noun	evening
+malam	ночь	time	1	noun	night
+ibu	мама	family	1	noun	mother
+bapak	папа	family	1	noun	father
+anak	ребёнок	family	1	noun	child
+kakak	старший брат/сестра	family	1	noun	older sibling
+adik	младший брат/сестра	family	1	noun	younger sibling
+suami	муж	family	1	noun	husband
+istri	жена	family	1	noun	wife
+kakek	дедушка	family	1	noun	grandfather
+nenek	бабушка	family	1	noun	grandmother
+paman	дядя	family	2	noun	uncle
+bibi	тётя	family	2	noun	aunt
+sepupu	двоюродный брат/сестра	family	2	noun	cousin
+teman	друг	family	1	noun	friend
+tetangga	сосед	family	2	noun	neighbor
+hotel	отель	places	1	noun	hotel
+restoran	ресторан	places	1	noun	restaurant
+bank	банк	places	1	noun	bank
+sekolah	школа	places	1	noun	school
+universitas	университет	places	2	noun	university
+masjid	мечеть	places	2	noun	mosque
+gereja	церковь	places	2	noun	church
+pura	балийский храм	places	2	noun	Balinese temple
+museum	музей	places	2	noun	museum
+bioskop	кинотеатр	places	1	noun	cinema
+supermarket	супермаркет	places	1	noun	supermarket
+warung	варунг (закусочная)	places	1	noun	small eatery
+kedai kopi	кофейня	places	1	noun	coffee shop
+kolam renang	бассейн	places	2	noun	swimming pool
+taman	парк	places	1	noun	park
+bandara	аэропорт	places	1	noun	airport
+pelabuhan	порт	places	2	noun	harbor
+ATM	банкомат	places	1	noun	ATM
+sapi masuk ke kandang	вернуться домой поздно	idioms	3	phrase	the cow enters the pen (to come home late)
+air tenang menghanyutkan	в тихом омуте черти водятся	idioms	3	phrase	still water carries away
+besar kepala	зазнаваться	idioms	2	phrase	big head (arrogant)
+panjang tangan	вороватый	idioms	3	phrase	long hands (thief)
+buah bibir	предмет разговоров	idioms	3	phrase	fruit of lips (gossip topic)
+makan hati	страдать молча	idioms	3	phrase	eat liver (suffer silently)
+naik darah	разозлиться	idioms	2	phrase	blood rises (get angry)
+masuk angin	простудиться	idioms	2	phrase	wind enters (catch cold)
+mata keranjang	бабник	idioms	3	phrase	basket eyes (womanizer)
+lidah buaya	двуличный	idioms	3	phrase	crocodile tongue (two-faced)
+tinggi hati	высокомерный	idioms	2	phrase	high heart (arrogant)
+ringan tangan	лёгкий на руку (агрессивный)	idioms	3	phrase	light hands (quick to hit)
+keras kepala	упрямый	idioms	2	phrase	hard head (stubborn)
+panjang umur	долголетия!	idioms	2	phrase	long life (wish)
+buah tangan	подарок (из поездки)	idioms	2	phrase	hand fruit (souvenir gift)
+kurang ajar	невоспитанный	idioms	2	phrase	poorly taught (rude)

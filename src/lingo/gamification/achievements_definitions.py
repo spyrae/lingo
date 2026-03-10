@@ -82,6 +82,39 @@ ACHIEVEMENTS: list[AchievementDefinition] = [
         description="Пройди 5 уроков",
         xp_reward=100,
     ),
+    AchievementDefinition(
+        id="vocab_250",
+        icon="📕",
+        name="Полиглот",
+        name_id="Poliglot",
+        description="Выучи 250 слов",
+        xp_reward=500,
+    ),
+    AchievementDefinition(
+        id="vocab_500",
+        icon="🏆",
+        name="Мастер слов",
+        name_id="Master Kata",
+        description="Выучи 500 слов",
+        xp_reward=1000,
+    ),
+    # Lessons
+    AchievementDefinition(
+        id="lesson_10",
+        icon="📚",
+        name="Знаток грамматики",
+        name_id="Pakar Tata Bahasa",
+        description="Пройди 10 уроков",
+        xp_reward=200,
+    ),
+    AchievementDefinition(
+        id="lesson_20",
+        icon="🎓",
+        name="Все уроки пройдены",
+        name_id="Semua Pelajaran Selesai",
+        description="Пройди 20 уроков",
+        xp_reward=500,
+    ),
     # Practice
     AchievementDefinition(
         id="practice_first",
@@ -90,6 +123,15 @@ ACHIEVEMENTS: list[AchievementDefinition] = [
         name_id="Dialog Pertama",
         description="Начни первую практику с AI",
         xp_reward=30,
+    ),
+    # Quiz
+    AchievementDefinition(
+        id="quiz_first",
+        icon="🧩",
+        name="Первый квиз",
+        name_id="Kuis Pertama",
+        description="Пройди первый квиз",
+        xp_reward=20,
     ),
 ]
 
