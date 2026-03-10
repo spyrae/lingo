@@ -1,0 +1,48 @@
+{
+  "id": "grammar-01",
+  "title": "Приветствия и обращения",
+  "title_id": "Salam dan Sapaan",
+  "order": 1,
+  "difficulty": 1,
+  "estimated_time": 5,
+  "prerequisites": [],
+  "theory": {
+    "text": "В индонезийском приветствие зависит от времени суток. Часто добавляют уважительное обращение: Pak (мужчина) и Bu (женщина).",
+    "key_points": [
+      "Selamat pagi — утро (примерно до 11:00)",
+      "Selamat siang — день (11:00–15:00)",
+      "Selamat sore — вечер (15:00–18:00)",
+      "Selamat malam — ночь/поздний вечер (после 18:00)",
+      "Pak — обращение к мужчине, Bu — к женщине"
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Selamat pagi, Pak!",
+      "russian": "Доброе утро, господин!",
+      "notes": "Pak — уважительное обращение к мужчине"
+    },
+    {
+      "indonesian": "Selamat siang, Bu. Apa kabar?",
+      "russian": "Добрый день, госпожа. Как дела?",
+      "notes": "Apa kabar? — Как дела?"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "Сейчас 14:00. Как поздороваться?",
+      "options": ["Selamat pagi", "Selamat siang", "Selamat sore", "Selamat malam"],
+      "correct": 1,
+      "explanation": "С 11:00 до 15:00 обычно используют Selamat siang."
+    },
+    {
+      "type": "fill",
+      "question": "Selamat ___, Pak! (вечер 16:00)",
+      "answer": "sore",
+      "hint": "15:00–18:00"
+    }
+  ],
+  "xp_reward": 15
+}
+

@@ -1,0 +1,48 @@
+{
+  "id": "grammar-04",
+  "title": "Вопросы (apa, siapa, di mana...)",
+  "title_id": "Pertanyaan (apa, siapa, di mana...)",
+  "order": 4,
+  "difficulty": 1,
+  "estimated_time": 7,
+  "prerequisites": ["grammar-03"],
+  "theory": {
+    "text": "Вопросительные слова обычно ставят на место того, о чём спрашиваем: apa (что), siapa (кто), di mana (где), ke mana (куда), dari mana (откуда), kapan (когда).",
+    "key_points": [
+      "Apa ini? — Что это?",
+      "Siapa kamu? — Кто ты?",
+      "Di mana rumahmu? — Где твой дом?",
+      "Ke mana kamu pergi? — Куда ты идёшь?",
+      "Dari mana kamu? — Откуда ты?"
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Ini apa?",
+      "russian": "Это что?",
+      "notes": "ini = это"
+    },
+    {
+      "indonesian": "Kamu pergi ke mana?",
+      "russian": "Ты куда идёшь?",
+      "notes": "ke mana = куда"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "Как спросить «где?»",
+      "options": ["apa", "siapa", "di mana", "kapan"],
+      "correct": 2,
+      "explanation": "Di mana = где."
+    },
+    {
+      "type": "fill",
+      "question": "Kamu dari ___? (откуда ты?)",
+      "answer": "mana",
+      "hint": "Dari mana = откуда"
+    }
+  ],
+  "xp_reward": 18
+}
+

@@ -1,0 +1,48 @@
+{
+  "id": "grammar-03",
+  "title": "Простые предложения (SVO)",
+  "title_id": "Kalimat Sederhana (SVO)",
+  "order": 3,
+  "difficulty": 1,
+  "estimated_time": 6,
+  "prerequisites": ["grammar-02"],
+  "theory": {
+    "text": "Базовый порядок слов часто похож на SVO: подлежащее + глагол + объект. В индонезийском нет спряжений по лицам и временам — контекст важнее формы.",
+    "key_points": [
+      "Saya makan nasi. = Я ем рис.",
+      "Dia minum air. = Он/она пьёт воду.",
+      "Глагол не меняется по лицам: makan = ем/ешь/ест",
+      "Время добавляют словами: sudah (уже), sedang (сейчас), akan (буду)"
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Saya makan nasi.",
+      "russian": "Я ем рис.",
+      "notes": "S (Saya) + V (makan) + O (nasi)"
+    },
+    {
+      "indonesian": "Dia sedang belajar bahasa Indonesia.",
+      "russian": "Он/она сейчас учит индонезийский.",
+      "notes": "sedang = сейчас (в процессе)"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "Какой порядок слов в предложении «Я пью воду»?",
+      "options": ["VSO", "SOV", "SVO", "OVS"],
+      "correct": 2,
+      "explanation": "Чаще всего SVO: Saya minum air."
+    },
+    {
+      "type": "translate",
+      "question": "Переведи: «Я учу индонезийский.»",
+      "indonesian": "Saya belajar bahasa Indonesia.",
+      "accept": ["saya belajar bahasa indonesia"],
+      "explanation": "belajar = учить/учиться"
+    }
+  ],
+  "xp_reward": 18
+}
+

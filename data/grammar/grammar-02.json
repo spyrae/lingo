@@ -1,0 +1,65 @@
+{
+  "id": "grammar-02",
+  "title": "Личные местоимения",
+  "title_id": "Kata Ganti Orang",
+  "order": 2,
+  "difficulty": 1,
+  "estimated_time": 7,
+  "prerequisites": ["grammar-01"],
+  "theory": {
+    "text": "Местоимения в индонезийском зависят от формальности. Также важна разница kami vs kita: включаешь ли собеседника в «мы».",
+    "key_points": [
+      "saya (я) — формально; aku — неформально",
+      "kamu (ты) — неформально; Anda — формально",
+      "dia — он/она (рода нет)",
+      "kami — мы без собеседника; kita — мы вместе с собеседником",
+      "mereka — они"
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Saya tinggal di Jakarta.",
+      "russian": "Я живу в Джакарте.",
+      "notes": "Saya — более формально"
+    },
+    {
+      "indonesian": "Kamu dari mana?",
+      "russian": "Ты откуда?",
+      "notes": "Kamu — неформально, для друзей"
+    },
+    {
+      "indonesian": "Kita pergi bersama, ya?",
+      "russian": "Мы пойдём вместе, да?",
+      "notes": "Kita включает собеседника"
+    },
+    {
+      "indonesian": "Kami dari Rusia.",
+      "russian": "Мы из России.",
+      "notes": "Kami не включает собеседника"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "Как сказать «он/она»?",
+      "options": ["saya", "kamu", "dia", "mereka"],
+      "correct": 2,
+      "explanation": "Dia = он/она, в языке нет различия по роду."
+    },
+    {
+      "type": "choice",
+      "question": "Ты говоришь другу «мы пойдём в кино». Какое местоимение лучше?",
+      "options": ["kami", "kita", "mereka", "kalian"],
+      "correct": 1,
+      "explanation": "Kita — если включаешь собеседника."
+    },
+    {
+      "type": "fill",
+      "question": "___ adalah mahasiswa. (Они студенты.)",
+      "answer": "mereka",
+      "hint": "3-е лицо, множественное"
+    }
+  ],
+  "xp_reward": 20
+}
+

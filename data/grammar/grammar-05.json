@@ -1,0 +1,47 @@
+{
+  "id": "grammar-05",
+  "title": "Отрицание (tidak, bukan)",
+  "title_id": "Negasi (tidak, bukan)",
+  "order": 5,
+  "difficulty": 1,
+  "estimated_time": 6,
+  "prerequisites": ["grammar-04"],
+  "theory": {
+    "text": "Есть два основных отрицания: tidak и bukan. Обычно tidak = «не» для действий/прилагательных, bukan = «не» для существительных/идентификации.",
+    "key_points": [
+      "Saya tidak tahu. — Я не знаю.",
+      "Ini tidak mahal. — Это не дорого.",
+      "Saya bukan guru. — Я не учитель.",
+      "Itu bukan rumah saya. — Это не мой дом."
+    ]
+  },
+  "examples": [
+    {
+      "indonesian": "Saya tidak mengerti.",
+      "russian": "Я не понимаю.",
+      "notes": "tidak + глагол"
+    },
+    {
+      "indonesian": "Dia bukan dokter.",
+      "russian": "Он/она не врач.",
+      "notes": "bukan + существительное"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "Что выбрать для «Я не студент»?",
+      "options": ["tidak", "bukan"],
+      "correct": 1,
+      "explanation": "Студент — существительное, значит bukan."
+    },
+    {
+      "type": "fill",
+      "question": "Saya ___ lapar. (Я не голоден.)",
+      "answer": "tidak",
+      "hint": "lapar = голоден (прилагательное)"
+    }
+  ],
+  "xp_reward": 18
+}
+
