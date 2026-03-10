@@ -85,3 +85,50 @@ def get_category_keyboard() -> InlineKeyboardMarkup:
     )
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
+
+def get_lessons_list_keyboard(lesson_ids: list[str], titles: dict[str, str]) -> InlineKeyboardMarkup:
+    rows: list[list[InlineKeyboardButton]] = []
+    for lesson_id in lesson_ids:
+        title = titles.get(lesson_id, lesson_id)
+        rows.append(
+            [InlineKeyboardButton(text=title, callback_data=f"lesson:open:{lesson_id}")]
+        )
+    rows.append([InlineKeyboardButton(text="◀️ Назад", callback_data="lesson:back")])
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+def get_lesson_theory_keyboard(lesson_id: str) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="✏️ К упражнениям",
+                    callback_data=f"lesson:start_exercises:{lesson_id}",
+                )
+            ],
+            [InlineKeyboardButton(text="◀️ К списку уроков", callback_data="lesson:back")],
+        ]
+    )
+
+
+def get_exercise_choice_keyboard(exercise_idx: int, options: list[str]) -> InlineKeyboardMarkup:
+    rows: list[list[InlineKeyboardButton]] = []
+    for i, opt in enumerate(options):
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    text=opt,
+                    callback_data=f"lesson:choice:{exercise_idx}:{i}",
+                )
+            ]
+        )
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+def get_exercise_next_keyboard(lesson_id: str) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="➡️ Далее", callback_data=f"lesson:next:{lesson_id}")],
+        ]
+    )
+

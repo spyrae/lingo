@@ -11,7 +11,7 @@ async def open_flashcards(message: Message) -> None:
 
 @router.message(F.text == "📖 Уроки")
 async def open_lessons(message: Message) -> None:
-    await message.answer("Скоро здесь будут уроки грамматики.")
+    await message.answer("Открой /lesson, чтобы выбрать урок.")
 
 
 @router.message(F.text == "💬 Практика")
