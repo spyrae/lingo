@@ -6,7 +6,7 @@ router = Router(name="menu")
 
 @router.message(F.text == "📚 Карточки")
 async def open_flashcards(message: Message) -> None:
-    await message.answer("Скоро здесь будут карточки (SRS).")
+    await message.answer("Открой /cards, чтобы начать карточки.")
 
 
 @router.message(F.text == "📖 Уроки")
@@ -16,7 +16,7 @@ async def open_lessons(message: Message) -> None:
 
 @router.message(F.text == "💬 Практика")
 async def open_practice(message: Message) -> None:
-    await message.answer("Скоро здесь будет практика диалогов с AI.")
+    await message.answer("Открой /practice, чтобы начать диалог с AI.")
 
 
 @router.message(F.text == "📊 Прогресс")

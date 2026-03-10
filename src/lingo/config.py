@@ -14,6 +14,14 @@ class Settings(BaseSettings):
         default="data/lingo.db",
         description="SQLite database path",
     )
+    codex_command: str = Field(
+        default="codex",
+        description="Codex CLI command name (e.g. codex)",
+    )
+    codex_timeout_seconds: int = Field(
+        default=60,
+        description="Timeout for Codex CLI call",
+    )
     allowed_user_ids: list[int] = Field(
         default_factory=list,
         description="List of Telegram user IDs allowed to use the bot",
